@@ -9,10 +9,10 @@ Criar um sistema de achados e perdidos exclusivo para a UFMG, simplificando a co
 - Receber Notificações de Correspondência (Adiciona uma camada proativa ao sistema).
 - Sistema de Chat (Fundamental para a interação e devolução de itens).
 
-## Membros e papeis
+## Membros e papéis
 - Lucas Paulo de Oliveira Silva: Fullstack
-- Warleu: Fullstack
-- Eduardo: Fullstack
+- Wesley Marques Daniel Chaves: Fullstack
+- Eduardo Alves Cordeiro: Fullstack
 
 ## Tecnologias
 - Frontend: HTML, CSS, Javascript e React.js.  
