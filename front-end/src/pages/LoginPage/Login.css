@@ -1,0 +1,96 @@
+/* Login.css */
+
+/* Reset básico */
+* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+}
+
+/* Body com fundo em gradiente */
+.login {
+        background: linear-gradient(var(--gradiente));        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+}
+
+/* Container do login */
+.login-container {
+        background: #fff;
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalho que identifica o sistema */
+.login-header {
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+}
+
+.login-header h1 {
+        font-size: 20px;
+        color: #4056a1;
+}
+
+/* Título da página de login */
+.login-container h2 {
+        text-align: center;
+        color: #4056a1;
+        margin-bottom: 20px;
+}
+
+/* Estilo dos labels */
+.login-container label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+}
+
+/* Campos de entrada */
+
+.login-container input{
+        background-color: #fff;
+        color: #333;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+}
+
+/* Botão de envio */
+.login-container button {
+        width: 100%;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px;
+        background-color: #4056a1;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+}
+
+/* Efeito hover para o botão */
+.login-container button:hover {
+        background-color: #6aafe6;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+        .login-container {
+        padding: 20px;
+        }
+}
