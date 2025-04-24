@@ -9,7 +9,7 @@
 
 /* Body com fundo em gradiente */
 .login {
-        background: linear-gradient(var(--gradiente));        
+        background: linear-gradient(var(--primary-gradient));        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -18,7 +18,7 @@
 
 /* Container do login */
 .login-container {
-        background: #fff;
+        background: var(--white);
         width: 100%;
         max-width: 400px;
         padding: 40px;
@@ -30,19 +30,19 @@
 .login-header {
         text-align: center;
         margin-bottom: 20px;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid var(--medium-gray);
         padding-bottom: 10px;
 }
 
 .login-header h1 {
         font-size: 20px;
-        color: #4056a1;
+        color: var(--primary-dark);
 }
 
 /* Título da página de login */
 .login-container h2 {
         text-align: center;
-        color: #4056a1;
+        color: var(--primary-dark);
         margin-bottom: 20px;
 }
 
@@ -50,14 +50,14 @@
 .login-container label {
         display: block;
         margin-bottom: 5px;
-        color: #333;
+        color: var(--text-color);
 }
 
 /* Campos de entrada */
 
 .login-container input{
-        background-color: #fff;
-        color: #333;
+        background-color: var(--white);
+        color: var(--text-color);
 }
 
 .login-container input[type="email"],
@@ -65,7 +65,7 @@
         width: 100%;
         padding: 12px 15px;
         margin-bottom: 20px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--medium-gray);
         border-radius: 4px;
         font-size: 14px;
 }
@@ -76,8 +76,8 @@
         padding: 12px 15px;
         border: none;
         border-radius: 4px;
-        background-color: #4056a1;
-        color: #fff;
+        background-color: var(--primary-dark);
+        color: var(--white);
         font-size: 16px;
         cursor: pointer;
         transition: background-color 0.3s ease;
@@ -85,7 +85,7 @@
 
 /* Efeito hover para o botão */
 .login-container button:hover {
-        background-color: #6aafe6;
+        background-color: var(--primary-light);
 }
 
 /* Responsividade para telas menores */

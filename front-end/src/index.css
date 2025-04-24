@@ -1,9 +1,25 @@
 :root {
   font-family: "Fira Sans", sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --cor_primaria: #4056a1;
-  --cor_secundaria: #6aafe6;
-  --gradiente: 135deg, var(--cor_secundaria), var(--cor_primaria);
 
+  /* Cores principaos*/
+  --primary-dark: #4056a1;
+  --primary-light: #6aafe6;
+  --primary-gradient: 135deg, var(--primary-light), var(--primary-dark);
+
+  /* Cores neutras e secundarias*/
+  --secondary-color: #4a90e2;
+  --accent-color: #FFA630;
+  --accent-dark: #D17A22;
+  --light-gray: #f8f9fa;
+  --medium-gray: #cccccc;
+  --dark-gray: #495057;
+  --text-color: #333333;
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Sombras */
+  --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.2);
+  
 }
 
 body{
