@@ -27,6 +27,13 @@ body{
   padding: 0;
 }
 
+/* Tomar cuidado com esse trecho */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 h1, h2, h3, h4, a, li, p{
   margin: 0;
   padding: 0;
