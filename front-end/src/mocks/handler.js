@@ -27,5 +27,32 @@ export const handlers = [
         categories: ['documentos', 'eletrônicos', 'vestuário', 'outros']
       })
     );
+  }),
+
+  rest.get(`${API_BASE_URL}/items`, (req, res, ctx) => {
+    const type = req.url.searchParams.get('type');
+    const sort = req.url.searchParams.get('_sort');
+    const order = req.url.searchParams.get('_order');
+    
+    let items = db.item.getAll();
+    
+    if (type) {
+      items = items.filter(item => item.type === type);
+    }
+    
+    if (sort && order) {
+      items.sort((a, b) => {
+        if (order === 'asc') {
+          return a[sort] > b[sort] ? 1 : -1;
+        } else {
+          return a[sort] < b[sort] ? 1 : -1;
+        }
+      });
+    }
+    
+    return res(
+      ctx.delay(150),
+      ctx.json(items)
+    );
   })
 ];

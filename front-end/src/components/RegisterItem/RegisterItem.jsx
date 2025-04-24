@@ -3,14 +3,36 @@ import "../../pages/DashboardPage/Dashboard.css";
 
 const RegisterItem = () => {
     const [formData, setFormData] = useState({
-        titulo: "",
-        descricao: "",
-        data: "",
-        local: "",
-        foto: null,
-        tipo: "",
-        categoria: ""
+        title: '',
+        description: '',
+        date: '',
+        location: '',
+        photo: null,
+        type: 'perdido',
+        category: ''
     });
+
+
+    const [categories, setCategories] = useState([]);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const navigate = useNavigate();
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+    // Carrega categorias do mock
+    useEffect(() => {
+        const fetchCategories = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/categories`);
+            const data = await response.json();
+            setCategories(data.categories);
+        } catch (error) {
+            console.error('Erro ao carregar categorias:', error);
+        }
+        };
+
+        fetchCategories();
+    }, []);
+
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -28,51 +50,74 @@ const RegisterItem = () => {
         }
     };
 
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aqui você pode enviar para a API (ou mock por enquanto)
-        console.log("Enviando dados:", formData);
-
-        // Exemplo usando FormData se quiser enviar com foto:
-        /*
-        const data = new FormData();
-        for (let key in formData) data.append(key, formData[key]);
-        fetch("/api/items", {
-            method: "POST",
-            body: data
-        });
-        */
+        setIsSubmitting(true);
+    
+        try {
+          const formDataToSend = new FormData();
+          formDataToSend.append('title', formData.title);
+          formDataToSend.append('description', formData.description);
+          formDataToSend.append('date', formData.date);
+          formDataToSend.append('location', formData.location);
+          formDataToSend.append('type', formData.type);
+          formDataToSend.append('category', formData.category);
+          if (formData.photo) {
+            formDataToSend.append('photo', formData.photo);
+          }
+    
+          const response = await fetch(`'${API_BASE_URL}/items`, {
+            method: 'POST',
+            body: formDataToSend
+          });
+    
+          if (response.ok) {
+            alert('Item cadastrado com sucesso!');
+            navigate('/');
+          } else {
+            throw new Error('Erro ao cadastrar item');
+          }
+        } catch (error) {
+          console.error('Erro:', error);
+          alert('Ocorreu um erro ao cadastrar o item');
+        } finally {
+          setIsSubmitting(false);
+        }
     };
+    
 
     return (
         <section className="register-section">
             <h2>Cadastrar Item Perdido/Encontrado</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="titulo">Título</label>
-                <input type="text" id="titulo" name="titulo" value={formData.titulo} onChange={handleChange} required />
+                <input type="text" id="titulo" name="titulo" value={formData.title} onChange={handleChange} required />
 
-                <label htmlFor="descricao">Descrição</label>
-                <textarea id="descricao" name="descricao" value={formData.descricao} onChange={handleChange} rows="3" />
+                <label htmlFor="description">Descrição</label>
+                <textarea id="description" name="description" value={formData.description} onChange={handleChange} rows="1" />
 
                 <label htmlFor="data">Data</label>
                 <input type="date" id="data" name="data" value={formData.data} onChange={handleChange} required />
 
                 <label htmlFor="local">Localização</label>
-                <input type="text" id="local" name="local" value={formData.local} onChange={handleChange} required />
+                <input type="text" id="local" name="local" value={formData.location} onChange={handleChange} required />
 
-                <label htmlFor="foto">Foto</label>
-                <input type="file" id="foto" name="foto" onChange={handleChange} accept="image/*" />
+                <label htmlFor="photo">Foto</label>
+                <input type="file" id="photo" name="photo" onChange={handleChange} accept="image/*" />
 
-                <label htmlFor="tipo">Tipo</label>
-                <select id="tipo" name="tipo" value={formData.tipo} onChange={handleChange} required>
-                    <option value="">Selecione o tipo</option>
-                    <option value="perdido">Perdido</option>
-                    <option value="encontrado">Encontrado</option>
-                </select>
+                <label htmlFor="type">
+                <input
+                type="radio" name="type" value="perdido" 
+                checked={formData.type === 'perdido'} onChange={handleChange} required/>Perdido</label>
 
-                <label htmlFor="categoria">Categoria</label>
-                <select id="categoria" name="categoria" value={formData.categoria} onChange={handleChange} required>
-                    <option value="">Selecione uma categoria</option>
+                <label htmlFor="type">
+                <input type="radio" name="type" value="encontrado" checked={formData.type === 'encontrado'} 
+                onChange={handleChange} /> Encontrado </label>
+
+                <label htmlFor="category">Categoria</label>
+                <select id="category" name="category" value={formData.category} onChange={handleChange} required>
+                    <option value="">Selecione uma Categoria</option>
                     <option value="eletronicos">Eletrônicos</option>
                     <option value="vestuario">Vestuário</option>
                     <option value="documentos">Documentos</option>
