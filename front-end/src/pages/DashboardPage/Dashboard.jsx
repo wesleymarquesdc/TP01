@@ -1,19 +1,39 @@
 import "./Dashboard.css"
-
+import React from "react";
 import RegisterItem from "../../components/RegisterItem/RegisterItem";
 import Feed from "../../components/Feed/Feed";
 
+
 const Dashboard = () => {
+    
+    const containerRef = React.useRef(null);
+    const sidebarRef = React.useRef(null);
+
+    React.useEffect(() => {
+        if (sidebarRef.current && containerRef.current) {
+        // Obtém a altura real da div 'b' (sidebar)
+        const alturaSidebar = sidebarRef.current.getBoundingClientRect().height;
+        
+        // Define a altura máxima para a div 'a' (container)
+        containerRef.current.style.maxHeight = `${alturaSidebar}px`;
+        containerRef.current.style.overflowY = "auto"; // Adiciona rolagem interna
+        }
+    }, []); // Executa o código após o primeiro render
+
     return (
         <>
             <header className="dashboard-header">
-                <h1>Sistema de Achados e Perdidos da UFMG - Dashboard</h1>
+                <h1>Sistema de Achados e Perdidos - Dashboard</h1>
             </header>
 
             <div className="dashboard-container">
-                <Feed></Feed>
 
-                <div className="dashboard-sidebar">
+                <div className="dashboard-feed" ref={containerRef}>
+                    <h2>Feed de Itens</h2>
+                    <Feed></Feed>
+                </div>
+
+                <div className="dashboard-sidebar" ref={sidebarRef}>
                     <section className="search-section">
                         <h2>Buscar por Categoria</h2>
                         <form>

@@ -1,7 +1,6 @@
 import "../../pages/DashboardPage/Dashboard.css";
 
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 const FeedItem = ({ item }) => {
   const [expanded, setExpanded] = useState(false);
@@ -13,7 +12,7 @@ const FeedItem = ({ item }) => {
         
         <h3>{item.title}</h3>
         <p><strong>Local: </strong>{item.location}</p>
-        <p><strong>Data: </strong>{item.location}</p>
+        <p><strong>Data: </strong>{item.date}</p>
 
         {expanded && (
           <div className="details">
@@ -32,18 +31,5 @@ const FeedItem = ({ item }) => {
   );
 };
 
-FeedItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    photo: PropTypes.string,
-    type: PropTypes.oneOf(['perdido', 'encontrado']).isRequired,
-    category: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired
-  }).isRequired
-};
 
 export default FeedItem;

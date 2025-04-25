@@ -37,6 +37,7 @@ html{
     margin: 0 auto;
     grid-template-columns: 1fr;
     padding: 1rem;
+
 }
 
 /* Em telas maiores (ex: desktop), usa duas colunas */
@@ -60,6 +61,8 @@ html{
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+
+    overflow-y: auto;
 }
 
 .dashboard-feed h2 {
@@ -125,7 +128,6 @@ form select {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
 
 form textarea {
     resize: vertical;

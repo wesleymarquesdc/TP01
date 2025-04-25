@@ -5,18 +5,20 @@ import { useEffect, useState } from 'react';
 import FeedItem from '../FeedItem/FeedItem.jsx';
 import axios from "axios";
 
-const Feed = ({ type = 'perdido' }) => {
+const Feed = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  console.log(BASE_URL)
 
   useEffect( () => {
     // Substitua pelo back-end real:
     axios.get(`${BASE_URL}/items`)
       .then(res => {
           setItems(res.data)
+          console.log(res.data)
           setIsLoading(false)
       })
       .catch(err => {
@@ -30,14 +32,13 @@ const Feed = ({ type = 'perdido' }) => {
   if (items.length === 0) return <div className="no-items">Nenhum item encontrado</div>;
 
   return (
-    <div className="dashboard-feed">
-      <h2>Feed de Itens {type === 'perdido' ? 'Perdidos' : 'Encontrados'}</h2>
+    <>
       <div className="feed-items">
         {items.map(item => (
           <FeedItem key={item.id} item={item} />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 
