@@ -1,0 +1,150 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(135deg, #6AAFE6, #4056A1);
+    box-sizing: border-box;
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+/* Cabeçalho da dashboard */
+.dashboard-header {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.dashboard-header h1 {
+    color: #4056A1;
+    font-size: 24px;
+}
+
+/* Container principal usando CSS Grid */
+.dashboard-container {
+    display: grid;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+
+}
+
+/* Em telas maiores (ex: desktop), usa duas colunas */
+@media (min-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        
+    }
+
+    .dashboard-header{
+        margin-bottom: 20px;
+    }
+
+}
+
+/* Estilização do feed (coluna única para os itens perdidos) */
+.dashboard-feed {
+    background: #fff;
+    padding: 20px 20px 0 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+
+    overflow-y: auto;
+}
+
+.dashboard-feed h2 {
+    color: #4056A1;
+    margin-bottom: 10px;
+}
+
+.feed-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.feed-item:last-child {
+    border-bottom: none;
+}
+
+.feed-item h3 {
+    color: #4056A1;
+    margin-bottom: 5px;
+}
+
+.feed-item p {
+    color: #333;
+}
+
+/* Estilização da sidebar para pesquisa, notificações e cadastro */
+.dashboard-sidebar section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.dashboard-sidebar h2 {
+    color: #4056A1;
+    margin-bottom: 10px;
+}
+
+.notifications-section{
+    max-height: 10rem; /* ou a altura desejada */
+    overflow-y: auto;
+}
+
+.notifications-section ul {
+    padding-left: 1rem;
+}
+
+/* Estilos dos formulários */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+form input[type="text"], form input[type="date"], form input[type="file"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form button {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: #4056A1;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #6AAFE6;
+}
