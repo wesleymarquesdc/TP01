@@ -1,42 +1,40 @@
 import "../../pages/DashboardPage/Dashboard.css";
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const FeedItem = ({ item }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <div 
-      className={`feed-item ${isExpanded ? 'expanded' : ''}`}
-      onClick={() => setIsExpanded(!isExpanded)}
-    >
-      <div className="feed-item-header">
+      className={`feed-item ${expanded ? 'expanded' : ''}`}
+      onClick={() => setExpanded(!expanded)}>
+        
         <h3>{item.title}</h3>
-        <p className="item-meta">
-          {item.type === 'perdido' ? 'Perdido' : 'Encontrado'} • {item.location} • {new Date(item.date).toLocaleDateString()}
-        </p>
-      </div>
+        <p><strong>Local: </strong>{item.location}</p>
+        <p><strong>Data: </strong>{item.location}</p>
+
+        {expanded && (
+          <div className="details">
+            {item.photo && <img src={item.photo} alt={item.title} className="item-photo" />}
+            <p><strong>Descrição:</strong> {item.description || 'Sem descrição'}</p>
+            <p><strong>Categoria:</strong> {item.category}</p>
+            <p><strong>Tipo:</strong> {item.type}</p>
+          </div>
+        )}
+
+      <button onClick={() => setExpanded(!expanded)}>
+        {expanded ? 'Fechar' : 'Ver mais'}
+      </button>      
       
-      {isExpanded && (
-        <div className="feed-item-details">
-          <p><strong>Descrição:</strong> {item.description}</p>
-          <p><strong>Categoria:</strong> {item.category}</p>
-          {item.photo && (
-            <div className="item-photo">
-              <img src={item.photo} alt={item.title} />
-            </div>
-          )}
-          <button className="contact-button">Entrar em contato</button>
-        </div>
-      )}
     </div>
   );
 };
 
 FeedItem.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,

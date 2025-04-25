@@ -1,6 +1,7 @@
 import "./Dashboard.css"
 
 import RegisterItem from "../../components/RegisterItem/RegisterItem";
+import Feed from "../../components/Feed/Feed";
 
 const Dashboard = () => {
     return (
@@ -10,10 +11,7 @@ const Dashboard = () => {
             </header>
 
             <div className="dashboard-container">
-                <div className="dashboard-feed">
-                    <h2>Feed de Itens Perdidos</h2>
-                    
-                </div>
+                <Feed></Feed>
 
                 <div className="dashboard-sidebar">
                     <section className="search-section">
