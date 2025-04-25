@@ -5,18 +5,15 @@
     padding: 0;
 }
 
-/* Estilos gerais */
-.dashboard {
-    font-family: Arial, sans-serif;
+body{
     background: linear-gradient(135deg, #6AAFE6, #4056A1);
-    padding: 20px;
 }
+
 
 /* Cabeçalho da dashboard */
 .dashboard-header {
     background: #fff;
     padding: 20px;
-    border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     margin-bottom: 20px;
@@ -47,9 +44,10 @@
 /* Estilização do feed (coluna única para os itens perdidos) */
 .dashboard-feed {
     background: #fff;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 
 .dashboard-feed h2 {
@@ -87,6 +85,10 @@
 .dashboard-sidebar h2 {
     color: #4056A1;
     margin-bottom: 10px;
+}
+
+.notifications-section ul {
+    padding-left: 1rem;
 }
 
 /* Estilos dos formulários */

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 import "../../pages/DashboardPage/Dashboard.css";
 
 const RegisterItem = () => {
@@ -15,14 +16,14 @@ const RegisterItem = () => {
 
     const [categories, setCategories] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const navigate = useNavigate();
-    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    // const navigate = useNavigate();
+    // const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
     // Carrega categorias do mock
     useEffect(() => {
         const fetchCategories = async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/categories`);
+            const response = await fetch('/api/categories');
             const data = await response.json();
             setCategories(data.categories);
         } catch (error) {
@@ -67,14 +68,14 @@ const RegisterItem = () => {
             formDataToSend.append('photo', formData.photo);
           }
     
-          const response = await fetch(`'${API_BASE_URL}/items`, {
+          const response = await fetch('/api/items', {
             method: 'POST',
             body: formDataToSend
           });
     
           if (response.ok) {
             alert('Item cadastrado com sucesso!');
-            navigate('/');
+            // navigate('/');
           } else {
             throw new Error('Erro ao cadastrar item');
           }
@@ -115,16 +116,33 @@ const RegisterItem = () => {
                 <input type="radio" name="type" value="encontrado" checked={formData.type === 'encontrado'} 
                 onChange={handleChange} /> Encontrado </label>
 
-                <label htmlFor="category">Categoria</label>
+                {/* <label htmlFor="category">Categoria</label>
                 <select id="category" name="category" value={formData.category} onChange={handleChange} required>
                     <option value="">Selecione uma Categoria</option>
                     <option value="eletronicos">Eletrônicos</option>
                     <option value="vestuario">Vestuário</option>
                     <option value="documentos">Documentos</option>
                     <option value="acessorios">Acessórios</option>
+                </select> */}
+
+                <label className="block text-gray-700 mb-2" htmlFor="category">Categoria*</label>
+                <select
+                  id="category"
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 border rounded-md"
+                  required
+                >
+                <option value="">Selecione uma categoria</option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
                 </select>
 
-                <button type="submit">Cadastrar Item</button>
+                <button type="submit" disabled={isSubmitting}>Cadastrar Item</button>
             </form>
         </section>
     );

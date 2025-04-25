@@ -2,10 +2,11 @@ import { rest } from 'msw';
 import { db } from './db';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+console.log(API_BASE_URL)
 
 export const handlers = [
   // Criar novo item
-  rest.post(`${API_BASE_URL}/items`, (req, res, ctx) => {
+  rest.post('/api/items', (req, res, ctx) => {
     const newItem = db.item.create({
       ...req.body,
       id: Date.now(),
@@ -20,7 +21,7 @@ export const handlers = [
   }),
 
   // Listar categorias (opcional)
-  rest.get(`${API_BASE_URL}/categories`, (req, res, ctx) => {
+  rest.get('/api/categories', (req, res, ctx) => {
     return res(
       ctx.delay(100),
       ctx.json({
@@ -29,7 +30,7 @@ export const handlers = [
     );
   }),
 
-  rest.get(`${API_BASE_URL}/items`, (req, res, ctx) => {
+  rest.get('/api/items', (req, res, ctx) => {
     const type = req.url.searchParams.get('type');
     const sort = req.url.searchParams.get('_sort');
     const order = req.url.searchParams.get('_order');
