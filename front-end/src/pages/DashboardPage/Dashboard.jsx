@@ -4,7 +4,7 @@ import RegisterItem from "../../components/RegisterItem/RegisterItem";
 
 const Dashboard = () => {
     return (
-        <div className="dashboard">
+        <>
             <header className="dashboard-header">
                 <h1>Sistema de Achados e Perdidos da UFMG - Dashboard</h1>
             </header>
@@ -30,19 +30,21 @@ const Dashboard = () => {
                         </form>
                     </section>
 
+                    <RegisterItem></RegisterItem>
                     
                     <section className="notifications-section">
                         <h2>Notificações</h2>
                         <ul>
-
+                            
                         </ul>
                     </section>
-
-                    <RegisterItem></RegisterItem>
+                    
+                    
+                    
 
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

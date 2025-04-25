@@ -7,8 +7,13 @@
 
 body{
     background: linear-gradient(135deg, #6AAFE6, #4056A1);
+    box-sizing: border-box;
+    height: 100%;
 }
 
+html{
+    height: 100%;
+}
 
 /* Cabeçalho da dashboard */
 .dashboard-header {
@@ -16,7 +21,7 @@ body{
     padding: 20px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .dashboard-header h1 {
@@ -31,14 +36,21 @@ body{
     max-width: 1200px;
     margin: 0 auto;
     grid-template-columns: 1fr;
-    /* Mobile: uma coluna */
+    padding: 1rem;
 }
 
 /* Em telas maiores (ex: desktop), usa duas colunas */
 @media (min-width: 768px) {
     .dashboard-container {
         grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        
     }
+
+    .dashboard-header{
+        margin-bottom: 20px;
+    }
+
 }
 
 /* Estilização do feed (coluna única para os itens perdidos) */
@@ -87,6 +99,11 @@ body{
     margin-bottom: 10px;
 }
 
+.notifications-section{
+    max-height: 10rem; /* ou a altura desejada */
+    overflow-y: auto;
+}
+
 .notifications-section ul {
     padding-left: 1rem;
 }
@@ -99,7 +116,7 @@ form label {
     font-weight: bold;
 }
 
-form input[type="text"],
+form input[type="text"], form input[type="date"], form input[type="file"],
 form textarea,
 form select {
     width: 100%;
@@ -108,6 +125,7 @@ form select {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 
 form textarea {
     resize: vertical;
