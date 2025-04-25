@@ -1,17 +1,16 @@
-// import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage/Login.jsx';
-// import CadastroItemPage from './pages/RegisterItemPage/RegisterItemPage';
+import { Auth } from './components/auth.jsx'
 
 function App() {
 
   return (
-    <Routes>
+    <Router>
+        <Routes>
       
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/" element={<Auth />} />
       
-    </Routes>
+        </Routes>
+    </Router>
   )
 }
 

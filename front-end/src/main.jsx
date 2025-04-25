@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import Login from './pages/LoginPage/Login.jsx'
 import Dashboard from './pages/DashboardPage/Dashboard.jsx'
+import { Auth } from './components/auth.jsx'
 
 import { BrowserRouter } from 'react-router-dom'
 
@@ -13,6 +14,6 @@ createRoot(document.getElementById('root')).render(
     {/* <BrowserRouter>
       <App/>
     </BrowserRouter> */}
-    <Login/>
+    <Auth/>
   </StrictMode>,
 )
