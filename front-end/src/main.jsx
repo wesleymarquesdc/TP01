@@ -5,9 +5,10 @@ import './index.css'
 
 // import Login from './pages/LoginPage/Login.jsx'
 import RegisterUser from './pages/RegisterUserPage/RegisterUser.jsx'
+import Dashboard from './pages/DashboardPage/Dashboard.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RegisterUser />
+    <Dashboard />
   </StrictMode>,
 )
