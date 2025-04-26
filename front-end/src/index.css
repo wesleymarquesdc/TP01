@@ -1,0 +1,44 @@
+:root {
+        font-family: "Fira Sans", sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
+      
+        /* Cores principaos*/
+        --primary-dark: #4056a1;
+        --primary-light: #6aafe6;
+        --primary-gradient: 135deg, var(--primary-light), var(--primary-dark);
+      
+        /* Cores neutras e secundarias*/
+        --secondary-color: #4a90e2;
+        --accent-color: #FFA630;
+        --accent-dark: #D17A22;
+        --light-gray: #f8f9fa;
+        --medium-gray: #cccccc;
+        --dark-gray: #495057;
+        --text-color: #333333;
+        --white: #ffffff;
+        --black: #000000;
+      
+        /* Sombras */
+        --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.2);
+        
+        /* Outras variáveis para espaçamentos e fontes */
+        --border-radius: 8px;
+        --font-family: "Fira Sans", sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
+      }
+      
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Tomar cuidado com esse trecho */
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      h1, h2, h3, h4, a, li, p{
+        margin: 0;
+        padding: 0;
+      }
+      
