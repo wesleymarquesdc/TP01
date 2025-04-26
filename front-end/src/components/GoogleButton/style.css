@@ -1,0 +1,20 @@
+@import '../../index.css';
+
+.google-button {
+        background-color: var(--light-gray);
+        color: var(--text-color);
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        cursor: pointer;
+        border-radius: var(--border-radius);
+        
+}
+
+.google-button:hover {
+        background-color: var(--medium-gray);
+}

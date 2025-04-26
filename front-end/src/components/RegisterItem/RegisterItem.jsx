@@ -24,11 +24,11 @@ const RegisterItem = ( ) => {
       }));
     };
 
-    const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
     async function getItems(){
       // Substitua pelo Back-end real :
-      await api.get("http://localhost:3000/items");
+      await api.get(`${BASE_URL}/items`);
       console.log("Passou por aqui!")
     }
   
@@ -40,7 +40,7 @@ const RegisterItem = ( ) => {
       e.preventDefault();
       try {
         // SUbstitua pelo Back-end real:
-        await axios.post(`http://localhost:3000/items`, formData);
+        await axios.post(`${BASE_URL}/items`, formData);
         alert('Item cadastrado com sucesso!');
         // Reset form after submission
         setFormData({

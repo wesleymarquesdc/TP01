@@ -20,6 +20,9 @@
   /* Sombras */
   --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.2);
   
+  /* Outras variáveis para espaçamentos e fontes */
+  --border-radius: 8px;
+  --font-family: "Fira Sans", sans-serif, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 body{

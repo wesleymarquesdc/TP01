@@ -1,8 +1,25 @@
 import "./Login.css"
-
-// import { Link } from 'react-router-dom';
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+        const navigate = useNavigate();
+
+        const handleSubmit = async (event) => {
+                event.preventDefault();
+
+                // Simule uma chamada à uma API para autenticar o usuário.
+                // Aqui você pode ter uma lógica de autenticação real.
+                const autenticado = true; // substitua pela sua lógica de autenticação
+        
+                if (autenticado) {
+                        // Se o usuário for autenticado, redireciona para a página /dashboard.
+                        navigate("/dashboard", { replace: true });
+                } else {
+                        // Caso contrário, trate o erro (exibir mensagem, limpar campos, etc.)
+                        console.log("Falha na autenticação");
+                }
+        };
 
         return(
                 <>
@@ -15,7 +32,7 @@ const Login = () => {
 
                         <h2>Login</h2>
 
-                        <form action="#" method="POST">
+                        <form onSubmit={handleSubmit}>
                                 <label htmlFor="email">Email</label>
                                 <input
                                 type="email"

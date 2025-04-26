@@ -11,14 +11,12 @@ const Feed = () => {
   const [error, setError] = useState(null);
 
   const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  console.log(BASE_URL)
 
   useEffect( () => {
     // Substitua pelo back-end real:
     axios.get(`${BASE_URL}/items`)
       .then(res => {
           setItems(res.data)
-          console.log(res.data)
           setIsLoading(false)
       })
       .catch(err => {
