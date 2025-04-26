@@ -19,3 +19,8 @@ Criar um sistema de achados e perdidos exclusivo para a UFMG, simplificando a co
 - Backend: Node.js, Express.js e Firebase.
 - Banco de dados: PostgreeSQL
 - Versionamento: git e github
+
+## Como executar:
+- `cd front-end`
+- `npm i`
+- `npm run dev`
