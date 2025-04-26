@@ -1,4 +1,6 @@
 /* Reset básico */
+@import "../../index.css";
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,6 +11,11 @@ body{
     background: linear-gradient(135deg, #6AAFE6, #4056A1);
     box-sizing: border-box;
     height: 100%;
+    display: block;
+}
+
+html body #root{
+    display: block;
 }
 
 html{

@@ -3,6 +3,7 @@ import './style.css'
 import GoogleButton from '../../components/GoogleButton/GoogleButton'
 
 const Register = () => {
+        
         return (
                         <div className='register-container'>
                                 <h2>Crie sua conta</h2>
