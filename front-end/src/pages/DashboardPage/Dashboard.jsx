@@ -1,6 +1,7 @@
 import "./Dashboard.css"
 import React from "react";
 import RegisterItem from "../../components/RegisterItem/RegisterItem";
+import Feed from "../../components/Feed/Feed.jsx";
 
 
 const Dashboard = () => {
@@ -29,6 +30,7 @@ const Dashboard = () => {
 
                 <div className="dashboard-feed" ref={containerRef}>
                     <h2>Feed de Itens</h2>
+                    <Feed></Feed>
                 </div>
 
                 <div className="dashboard-sidebar" ref={sidebarRef}>
