@@ -1,36 +1,53 @@
 import "./Login.css"
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { doSignInWithEmailAndPassword, doSignInWithGoogle, doSignOut } from '../../firebase/auth';
 import { Link } from 'react-router-dom'
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import SubmitButton from "../../components/Button/SubmitButton";
 import GoogleButton from "../../components/GoogleButton/GoogleButton";
 
 const Login = () => {
-        const navigate = useNavigate();
+        const [email, setEmail] = useState('')
+        const [password, setPassword] = useState('')
+        const [isSigningIn, setIsSigningIn] = useState(false)
         const [error, setError] = React.useState(null);
 
         const handleSubmit = async (event) => {
                 event.preventDefault();
 
-                // Simule uma chamada à uma API para autenticar o usuário.
-                // Aqui você pode ter uma lógica de autenticação real.
-                const autenticado = true; // substitua pela sua lógica de autenticação
-        
-                if (autenticado) {
-                        // Se o usuário for autenticado, redireciona para a página /dashboard.
-                        setError('');
-                        navigate("/dashboard", { replace: true });
-                } else {
-                        // Caso contrário, trate o erro (exibir mensagem, limpar campos, etc.)
-                        setError("Email ou senha inválidos!");
-                        console.log("Falha na autenticação");
-                        return
+                if(!isSigningIn) {
+                        setIsSigningIn(true)
+                        try{
+                                await doSignInWithEmailAndPassword(email, password)
+                        }catch(err){
+                                setError(err)
+                                console.log(error)
+                        }finally{
+                                setIsSigningIn(false)
+                        }
                 }
         };
 
+        const onGoogleSignIn = async (e) => {
+                if(!isSigningIn) {
+                        setIsSigningIn(true)
+                        try{
+                                await doSignInWithGoogle()
+                        }catch(err){
+                                setError(err)
+                                console.log(error)
+                        }finally{
+                                setIsSigningIn(false)
+                        }
+                }
+        };
+
+        // teste
+        const onSignOut = async (e) => {
+                e.preventDefault()
+                await doSignOut()
+        }
+
         return(
-                <>
                 <div className="login">
                         <div className="login-container">
                                 <header className="login-header">
@@ -46,8 +63,9 @@ const Login = () => {
                                 type="email"
                                 id="email"
                                 name="email"
-                                placeholder="Email @ufmg"
+                                placeholder="Digite seu email"
                                 required
+                                onChange={(e) => setEmail(e.target.value)}
                                 />
 
                                 <label htmlFor="password">Senha</label>
@@ -57,11 +75,13 @@ const Login = () => {
                                 name="password"
                                 placeholder="Digite sua senha"
                                 required
+                                onChange={(e) => setPassword(e.target.value)}
                                 />
 
                                 <SubmitButton>Entrar</SubmitButton>
-                                <ErrorMessage message={error}></ErrorMessage>
-                                <GoogleButton style={{marginTop: "15px"}} >Entrar com o Google</GoogleButton>
+                                <GoogleButton type="button" onClick={onSignOut} style={{marginTop: "15px"}} >
+                                        Entrar com o Google
+                                </GoogleButton>
                                 
                                 <p className="login-link" style={{textAlign: "center"}}>
                                         <span>Não tem uma conta? </span>
@@ -70,7 +90,6 @@ const Login = () => {
                         </form>
                         </div>
                 </div>
-                </>
         )
 }
 
