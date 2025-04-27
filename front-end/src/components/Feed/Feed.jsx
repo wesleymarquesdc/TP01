@@ -12,7 +12,7 @@ const Feed = () => {
 
   const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  useEffect( () => {
+  function getItems(){
     // Substitua pelo back-end real:
     axios.get(`${BASE_URL}/items`)
       .then(res => {
@@ -23,7 +23,13 @@ const Feed = () => {
         console.error('Erro ao carregar itens:', err)
         setError(err)
       })
+  }
+
+  useEffect( () => {
+    getItems();
   }, []);
+
+  
 
   if (isLoading) return <div className="loading">Carregando...</div>;
   if (error) return <div className="error">Erro: {error}</div>;

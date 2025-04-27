@@ -1,11 +1,15 @@
 import React from 'react'
 
-const Button = ({texto}) => {
+const Button = ({ children, type='button', onClick, className, ...props}) => {
         return (
-                <div>
-                        <button type="submit">{texto}</button>
-
-                </div>
+                <button
+                        type={type}
+                        onClick={onClick}
+                        className={`button ${className}`}
+                        {...props}
+                        >
+                        {children}
+                </button>
         )
 }
 

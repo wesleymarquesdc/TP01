@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from 'axios';
 // import { useNavigate } from "react-router-dom";
 import "../../pages/DashboardPage/Dashboard.css";
+import SubmitButton from "../Button/SubmitButton.jsx";
+import SelectCategory from "../SelectCategory/SelectCategory.jsx";
 import api from '../../services/api.js'
 
 const RegisterItem = ( ) => {
@@ -73,8 +75,10 @@ const RegisterItem = ( ) => {
                 <option value="perdido">Perdido</option>
                 <option value="encontrado">Encontrado</option>
               </select>
-              <input type="text" name="category" value={formData.category} onChange={handleChange} placeholder="Categoria" required />
-              <button type="submit">Cadastrar</button>
+              {/* <input type="text" name="category" value={formData.category} onChange={handleChange} placeholder="Categoria" required /> */}
+              <SelectCategory value={formData.category} onChange={handleChange}></SelectCategory>
+
+              <SubmitButton>Cadastrar</SubmitButton>
           </form>
 
         </section>
