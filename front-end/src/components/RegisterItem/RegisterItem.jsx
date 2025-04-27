@@ -17,6 +17,12 @@ const RegisterItem = ( ) => {
         category: '',
         user: ''
     });
+
+    const [error, setError] = useState("");
+
+    // Definir as datas maximas e minimas
+    const dataMinima = "1927-09-07"; // Data fixa
+    const dataMaxima = new Date().toISOString().split("T")[0]; // Data atual formatada como YYYY-MM-DD
     
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -38,12 +44,19 @@ const RegisterItem = ( ) => {
       getItems()
     },[])
 
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
         // SUbstitua pelo Back-end real:
         await axios.post(`${BASE_URL}/items`, formData);
         alert('Item cadastrado com sucesso!');
+
+        if (!formData.category) {
+          setError("Por favor, selecione uma categoria.");
+          return;
+        }
+
         // Reset form after submission
         setFormData({
           title: '',
@@ -68,7 +81,7 @@ const RegisterItem = ( ) => {
             <form onSubmit={handleSubmit}>
               <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Título" required />
               <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Descrição" rows="1" required />
-              <input type="date" name="date" value={formData.data} onChange={handleChange} required />
+              <input type="date" name="date" value={formData.data} onChange={handleChange} min={dataMinima} max={dataMaxima} required />
               <input type="text" name="location" value={formData.location} onChange={handleChange} placeholder="Local" required />
               <input type="file" name="photo" accept="image/*"  onChange={handleChange} placeholder="Foto" />
               <select name="type" value={formData.type} onChange={handleChange}>
@@ -78,6 +91,7 @@ const RegisterItem = ( ) => {
               {/* <input type="text" name="category" value={formData.category} onChange={handleChange} placeholder="Categoria" required /> */}
               <SelectCategory value={formData.category} onChange={handleChange}></SelectCategory>
 
+              {error && <p style={{ color: "red" }}>{error}</p>} {/* Mensagem de erro */}
               <SubmitButton>Cadastrar</SubmitButton>
           </form>
 
