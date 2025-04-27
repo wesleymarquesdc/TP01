@@ -37,7 +37,7 @@ const Feed = () => {
 
   return (
     <>
-      {items == null ? 
+      {items != null ? 
         <div className="feed-items">
           {items.map(item => (
             <FeedItem key={item.id} item={item} />

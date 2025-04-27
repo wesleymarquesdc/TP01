@@ -7,6 +7,7 @@ import './style.css'
 
 const SlideInModalItem = ({item, children, estiloBotao}) => {
         const [showModal, setShowModal] = React.useState(false);
+        let colorClass = (item.type === 'encontrado') ? 'accept' : 'decline';
 
         return (
                 <div className='modal-container'> 
@@ -43,7 +44,12 @@ const SlideInModalItem = ({item, children, estiloBotao}) => {
                                                 </div>
                                                 <p><strong>Descrição:</strong> {item.description || 'Sem descrição'}</p>
                                                 <p><strong>Categoria:</strong> {item.category}</p>
-                                                <p><strong>Tipo:</strong> {item.type}</p>
+                                                <p>
+                                                        <strong>Tipo:</strong> 
+                                                        <span id={`${colorClass}`} >
+                                                                {item.type} 
+                                                        </span>
+                                                </p>
                                         </div>
 
                                         {/* Botão para iniciar chat pode ser colocado aqui */}

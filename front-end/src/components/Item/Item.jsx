@@ -7,6 +7,9 @@ const Item = ({ item }) => {
                         <h3>{item.title}</h3>
                         <p><strong>Local:</strong> {item.location}</p>
                         <p><strong>Data:</strong> {item.date}</p>
+                        <p >
+                                <strong>Categoria:</strong> {item.category}
+                        </p>
                 </div>
         )
 }

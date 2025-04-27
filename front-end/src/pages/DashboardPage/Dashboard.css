@@ -121,6 +121,14 @@ html{
     padding-left: 1rem;
 }
 
+.accept{
+    color: var(--green);
+}
+
+.decline{
+    color: var(--red);
+}
+
 /* Estilos dos formulários */
 form label {
     display: block;

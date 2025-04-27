@@ -82,6 +82,14 @@ button {
         color: white;
 }
       
+#accept{
+        color: var(--green);
+}
+    
+#decline{
+        color: var(--red);
+}
+
 button:hover {
         transform: scale(1.05);
 }

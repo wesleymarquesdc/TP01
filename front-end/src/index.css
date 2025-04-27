@@ -16,6 +16,8 @@
   --text-color: #333333;
   --white: #ffffff;
   --black: #000000;
+  --green: #4CAF50;
+  --red: #E53E3E;
 
   /* Sombras */
   --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.2);
