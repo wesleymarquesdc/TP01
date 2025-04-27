@@ -1,5 +1,6 @@
 import "./Login.css"
 import React from 'react'
+import GoogleButton from '../../components/GoogleButton/GoogleButton.jsx'
 
 const Login = () => {
 
@@ -40,7 +41,8 @@ const Login = () => {
                                 />
 
                                 <button type="button">Entrar</button>
-
+                                <p style={{textAlign: 'center', margin: "10px 0"}}>OU</p>
+                                <GoogleButton texto="Logar com o Google"></GoogleButton>
                         </form>
                         </div>
                         </div>
