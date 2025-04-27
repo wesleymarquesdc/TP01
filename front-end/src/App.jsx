@@ -7,7 +7,7 @@ import RegisterPage from './pages/RegisterPage/Register.jsx'
 
 function App() {
   // Substitua pela logica de autenticacao:
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   return (
     <BrowserRouter>
@@ -18,7 +18,7 @@ function App() {
           element={
             isAuthenticated ? 
             <Navigate to="/dashboard" replace /> : 
-            <Navigate to="/register" replace />
+            <Navigate to="/login" replace />
           }
         />
 
@@ -33,7 +33,7 @@ function App() {
             isAuthenticated ? (
               <DashboardPage />
             ) : (
-              <Navigate to="/register" replace />
+              <Navigate to="/login" replace />
             )
           }
         />
