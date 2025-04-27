@@ -1,11 +1,12 @@
 import "../../pages/DashboardPage/Dashboard.css"
-
 import "../../pages/DashboardPage/Dashboard.css"
 
-const Notification = () => {
+const Notification = ({children}) => {
     return (
         <>
-        
+            <ul>
+                {children}
+            </ul>
         </>
     )
 }

@@ -1,6 +1,8 @@
 import "../../pages/DashboardPage/Dashboard.css";
 
 import React, { useState } from 'react';
+import ViewMoreButton from "../Button/ViewMoreButton";
+import CloseButton from "../Button/CloseButton";
 
 const FeedItem = ({ item }) => {
   const [expanded, setExpanded] = useState(false);
@@ -21,11 +23,26 @@ const FeedItem = ({ item }) => {
             <p><strong>Categoria:</strong> {item.category}</p>
             <p><strong>Tipo:</strong> {item.type}</p>
           </div>
-        )}
+        )}  
 
-      <button onClick={() => setExpanded(!expanded)}>
-        {expanded ? 'Fechar' : 'Ver mais'}
-      </button>      
+        {/* Logica para abrir e fechar o botao */}
+        {!expanded 
+          ? (
+            <ViewMoreButton 
+              onClick={() => setExpanded(true)} 
+              style={{ padding: "5px 3px", fontSize: "12px" }}
+            >
+              Ver mais
+            </ViewMoreButton>
+          ) 
+          : (
+            <CloseButton 
+              onClick={() => setExpanded(false)} 
+              style={{ padding: "5px 3px", fontSize: "12px" }}
+            >
+              Fechar
+            </CloseButton>
+        )}
       
     </div>
   );
