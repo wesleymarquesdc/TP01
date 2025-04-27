@@ -1,5 +1,6 @@
 import "./Dashboard.css"
 import React from "react";
+import { doSignOut } from "../../firebase/auth";
 import RegisterItem from "../../components/RegisterItem/RegisterItem";
 import Feed from "../../components/Feed/Feed";
 import Search from "../../components/Search/Search";
@@ -9,6 +10,11 @@ const Dashboard = () => {
     
     const containerRef = React.useRef(null);
     const sidebarRef = React.useRef(null);
+
+    const onSignOut = async (e) => {
+        e.preventDefault()
+        await doSignOut()
+    }
 
     React.useEffect(() => {
         if (sidebarRef.current && containerRef.current) {
@@ -25,6 +31,7 @@ const Dashboard = () => {
         <>
             <header className="dashboard-header">
                 <h1>Sistema de Achados e Perdidos - Dashboard</h1>
+                <button onClick={onSignOut}>Sair</button>
             </header>
 
             <div className="dashboard-container">
