@@ -50,13 +50,15 @@ const RegisterItem = ( ) => {
       try {
         // SUbstitua pelo Back-end real:
         await axios.post(`${BASE_URL}/items`, formData);
-        alert('Item cadastrado com sucesso!');
-
+        
         if (!formData.category) {
           setError("Por favor, selecione uma categoria.");
           return;
         }
-
+        
+        setError('');
+        alert('Item cadastrado com sucesso!');
+        
         // Reset form after submission
         setFormData({
           title: '',
