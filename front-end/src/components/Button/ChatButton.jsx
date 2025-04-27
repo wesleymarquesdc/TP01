@@ -3,10 +3,12 @@ import Button from './Button'
 
 const ChatButton = ({ onClick, icon = '💬', children, ...props  }) => {
         return (
-                <Button className={'btn-chat'} onClick={onClick} {...props} > 
-                        {icon}
+                <div className='chatDiv' style={{display: "flex", alignItems: "center", gap: "5px"}}>
+                        <Button className={'btn-chat'} onClick={onClick} {...props} > 
+                                {icon}
+                        </Button>
                         {children}
-                </Button>
+                </div>
         )
 }
 

@@ -2,7 +2,7 @@ import "../../pages/DashboardPage/Dashboard.css"
 
 
 import { useEffect, useState } from 'react';
-import FeedItem from '../FeedItem/FeedItem.jsx';
+import FeedItem from '../Item/FeedItem.jsx';
 import axios from "axios";
 
 const Feed = () => {
@@ -39,7 +39,7 @@ const Feed = () => {
     <>
       <div className="feed-items">
         {items.map(item => (
-          <FeedItem key={item.id} item={item} />
+          <FeedItem key={item.id} item={item} estiloBotao={{ padding: "10px 6px", fontSize: "12px" }}/>
         ))}
       </div>
     </>
