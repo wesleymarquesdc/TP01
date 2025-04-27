@@ -7,7 +7,7 @@ import SubmitButton from '../../components/Button/SubmitButton';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 
-const Register = () => {
+const RegisterUser = () => {
         const [email, setEmail] = React.useState('')
         const [password, setPassword] = React.useState('')
         const [userName, setUserName] = React.useState('')
@@ -100,4 +100,4 @@ const Register = () => {
         )
 }
 
-export default Register
+export default RegisterUser

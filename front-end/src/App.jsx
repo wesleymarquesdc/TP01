@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter, Navigate, Link }
 import { useAuth } from './contexts/authContext/index.jsx';
 import LoginPage from './pages/LoginPage/Login.jsx';
 import DashboardPage from './pages/DashboardPage/Dashboard.jsx'
-import RegisterPage from './pages/RegisterPage/Register.jsx'
+import RegisterPage from './pages/RegisterUserPage/Register.jsx'
 
 
 function App() {
