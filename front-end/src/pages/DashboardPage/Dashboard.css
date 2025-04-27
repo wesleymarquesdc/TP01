@@ -1,18 +1,21 @@
 /* Reset básico */
+@import "../../index.css";
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-#root{
-    display: block;
-}
-
 body{
     background: linear-gradient(135deg, #6AAFE6, #4056A1);
     box-sizing: border-box;
     height: 100%;
+    display: block;
+}
+
+html body #root{
+    display: block;
 }
 
 html{
@@ -54,6 +57,7 @@ html{
 
     .dashboard-header{
         margin-bottom: 20px;
+        padding: 15px;
     }
 
 }
@@ -62,9 +66,9 @@ html{
 .dashboard-feed {
     background: #fff;
     padding: 20px 20px 0 20px;
+    box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
 
     overflow-y: auto;
 }
@@ -81,6 +85,8 @@ html{
 
 .feed-item:last-child {
     border-bottom: none;
+    padding: 0px;
+    padding-top: 10px;
 }
 
 .feed-item h3 {

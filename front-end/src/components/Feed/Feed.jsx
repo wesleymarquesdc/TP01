@@ -2,7 +2,7 @@ import "../../pages/DashboardPage/Dashboard.css"
 
 
 import { useEffect, useState } from 'react';
-import FeedItem from '../FeedItem/FeedItem.jsx';
+import FeedItem from '../Item/FeedItem.jsx';
 import axios from "axios";
 
 const Feed = () => {
@@ -12,7 +12,7 @@ const Feed = () => {
 
   const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  useEffect( () => {
+  function getItems(){
     // Substitua pelo back-end real:
     axios.get(`${BASE_URL}/items`)
       .then(res => {
@@ -23,12 +23,17 @@ const Feed = () => {
         console.error('Erro ao carregar itens:', err)
         setError(err)
       })
+  }
+
+  useEffect( () => {
+    getItems();
   }, []);
+
+  
 
   if (isLoading) return <div className="loading">Carregando...</div>;
   if (error) return <div className="error">Erro: {error}</div>;
   if (items.length === 0) return <div className="no-items">Nenhum item encontrado</div>;
-
 
   return (
     <>
@@ -40,8 +45,7 @@ const Feed = () => {
         </div> : <div>Nao foi possivel carregar o feed</div>
       
       }
-    
-      </>
+    </>
   );
 };
 
