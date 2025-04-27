@@ -18,17 +18,14 @@ const RegisterItem = ( ) => {
         user: ''
     });
 
-    // Estado para mostrar renderizar erros
     const [error, setError] = useState("");
 
-
     // Definir as datas maximas e minimas
-    const minDate = "1927-09-07"; // Data fixa
-    const maxDate = new Date().toISOString().split("T")[0]; // Data atual formatada como YYYY-MM-DD
+    const dataMinima = "1927-09-07"; // Data fixa
+    const dataMaxima = new Date().toISOString().split("T")[0]; // Data atual formatada como YYYY-MM-DD
     
     const handleChange = (e) => {
       const { name, value } = e.target;
-      
       setFormData(prev => ({
         ...prev,
         [name]: value
@@ -47,6 +44,7 @@ const RegisterItem = ( ) => {
       getItems()
     },[])
 
+
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
@@ -60,6 +58,7 @@ const RegisterItem = ( ) => {
         
         setError('');
         alert('Item cadastrado com sucesso!');
+        
         // Reset form after submission
         setFormData({
           title: '',
@@ -84,16 +83,15 @@ const RegisterItem = ( ) => {
             <form onSubmit={handleSubmit}>
               <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Título" required />
               <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Descrição" rows="1" required />
-              <input type="date" name="date" value={formData.data} onChange={handleChange} min={minDate} max={maxDate} required />
+              <input type="date" name="date" value={formData.data} onChange={handleChange} min={dataMinima} max={dataMaxima} required />
               <input type="text" name="location" value={formData.location} onChange={handleChange} placeholder="Local" required />
               <input type="file" name="photo" accept="image/*"  onChange={handleChange} placeholder="Foto" />
               <select name="type" value={formData.type} onChange={handleChange}>
                 <option value="perdido">Perdido</option>
                 <option value="encontrado">Encontrado</option>
               </select>
-              
-
-              <SelectCategory value={formData.category} onChange={handleChange}>   </SelectCategory>
+              {/* <input type="text" name="category" value={formData.category} onChange={handleChange} placeholder="Categoria" required /> */}
+              <SelectCategory value={formData.category} onChange={handleChange}></SelectCategory>
 
               {error && <p style={{ color: "red" }}>{error}</p>} {/* Mensagem de erro */}
               <SubmitButton>Cadastrar</SubmitButton>

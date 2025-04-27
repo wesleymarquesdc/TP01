@@ -1,10 +1,12 @@
 import React from 'react'
-import './style.css'
+import './Register.css'
 import GoogleButton from '../../components/GoogleButton/GoogleButton'
+import { Link } from 'react-router-dom'
 
 const RegisterUser = () => {
         
         return (
+                        <div className='register'>
                         <div className='register-container'>
                                 <h2>Crie sua conta</h2>
                                 <form >
@@ -21,16 +23,17 @@ const RegisterUser = () => {
                                         
                                         <p>OU</p>
 
-                                        <GoogleButton texto="Cadastrar com o Google" />
+                                        <GoogleButton>Entrar com o Google</GoogleButton>
 
 
                                 </form>
                                 <p className="login-link">
                                         <span>tem uma conta? </span>
-                                        <a href="/login">Faça Login</a>
+                                        <Link to="/login">Faça login</Link>
                                 </p>
+                        </div>
                         </div>
         )
 }
 
-export default RegisterUser
+export default RegisterUser;

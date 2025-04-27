@@ -1,9 +1,9 @@
 import './style.css';
 import React from 'react'
 
-const GoogleButton = ({texto}) => {
+const GoogleButton = ({ children, ...props }) => {
         return (
-                <div className="google-button">
+                <div className="google-button" {...props}>
                         <div className="google-button-img">
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ const GoogleButton = ({texto}) => {
                                 </svg>
                         </div>
                         
-                        {texto}
+                        {children}
                 </div>
 
         )

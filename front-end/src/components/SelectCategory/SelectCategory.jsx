@@ -11,8 +11,10 @@ const SelectCategory = ({ value, onChange, children }) => {
                         <option value="chaves">Chaves</option>
                         <option value="dinheiro">Dinheiro</option>
                 </select>
+
                 {children}
                 </>
+                
         )
 }
 
