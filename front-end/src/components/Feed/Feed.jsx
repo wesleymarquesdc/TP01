@@ -37,11 +37,14 @@ const Feed = () => {
 
   return (
     <>
-      <div className="feed-items">
-        {items.map(item => (
-          <FeedItem key={item.id} item={item} estiloBotao={{ padding: "10px 6px", fontSize: "12px" }}/>
-        ))}
-      </div>
+      {items == null ? 
+        <div className="feed-items">
+          {items.map(item => (
+            <FeedItem key={item.id} item={item} />
+          ))}
+        </div> : <div>Nao foi possivel carregar o feed</div>
+      
+      }
     </>
   );
 };
