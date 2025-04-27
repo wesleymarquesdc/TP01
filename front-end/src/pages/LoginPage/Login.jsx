@@ -1,6 +1,6 @@
 import "./Login.css"
 import React, { useState } from 'react'
-import { doSignInWithEmailAndPassword, doSignInWithGoogle, doSignOut } from '../../firebase/auth';
+import { doSignInWithEmailAndPassword, doSignInWithGoogle} from '../../firebase/auth';
 import { Link } from 'react-router-dom'
 import SubmitButton from "../../components/Button/SubmitButton";
 import GoogleButton from "../../components/GoogleButton/GoogleButton";
@@ -41,12 +41,6 @@ const Login = () => {
                 }
         };
 
-        // teste
-        const onSignOut = async (e) => {
-                e.preventDefault()
-                await doSignOut()
-        }
-
         return(
                 <div className="login">
                         <div className="login-container">
@@ -79,7 +73,7 @@ const Login = () => {
                                 />
 
                                 <SubmitButton>Entrar</SubmitButton>
-                                <GoogleButton type="button" onClick={onSignOut} style={{marginTop: "15px"}} >
+                                <GoogleButton type="button" onClick={onGoogleSignIn} style={{marginTop: "15px"}} >
                                         Entrar com o Google
                                 </GoogleButton>
                                 

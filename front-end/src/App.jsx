@@ -36,9 +36,9 @@ function App() {
           }
         />
 
-        <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/login" element={<LoginPage />} /> */}
 
-        {/* <Route 
+        <Route 
           path="/login" 
           element={
             isAuthenticated ? (
@@ -47,7 +47,7 @@ function App() {
               <LoginPage />
             )
           }
-        /> */}
+        />
 
         {/* Rota protegida: só permite acessar a Dashboard se estiver autenticado */}
         <Route
