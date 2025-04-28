@@ -1,11 +1,12 @@
 import { db } from "./firebase"; 
-import { addDoc, collection, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, serverTimestamp, query, orderBy } from "firebase/firestore";
 
 // utiliza snapshot para "escutar" o banco
 export const getItensFromDB = (callback) => {
     const itensCollectionsRef = collection(db, "itens");
+    const q = query(itensCollectionsRef, orderBy("createdAt", "desc"));
 
-    const unsubscribe = onSnapshot(itensCollectionsRef, (snapshot) => {
+    const unsubscribe = onSnapshot(q, (snapshot) => {
         const itens = snapshot.docs.map((doc) => ({
             ...doc.data(),
             id: doc.id
@@ -19,7 +20,11 @@ export const getItensFromDB = (callback) => {
 export const saveItemToDB = async (item) => {
     try {
       const itensCollectionRef = collection(db, "itens");
-      const docRef = await addDoc(itensCollectionRef, item);
+
+      const docRef = await addDoc(itensCollectionRef, {
+        ...item,
+        createdAt: serverTimestamp()
+      });
       return docRef.id;
     } catch (err) {
       console.log(err)
