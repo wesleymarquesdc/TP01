@@ -16,8 +16,7 @@ Criar um sistema de achados e perdidos exclusivo para a UFMG, simplificando a co
 
 ## Tecnologias
 - Frontend: HTML, CSS, Javascript e React.js.  
-- Backend: Node.js, Express.js e Firebase.
-- Banco de dados: PostgreeSQL
+- Backend: Firebase.
 - Versionamento: git e github
 
 ## Como executar:
