@@ -5,8 +5,10 @@ import DashboardPage from './pages/DashboardPage/Dashboard.jsx'
 import RegisterUserPage from './pages/RegisterUserPage/RegisterUser.jsx'
 
 function App() {
+  // CONEXÃO COM O BACK-END
   const { userLoggedIn } = useAuth()
   const isAuthenticated = userLoggedIn
+  /////////////////////////
 
   return (
     <BrowserRouter>

@@ -12,6 +12,7 @@ const RegisterUser = () => {
         const [isSigningIn, setIsSigningIn] = useState(false)
         const [error, setError] = React.useState(null);
 
+        // CONEXÃO COM O BACK-END
         const handleSubmit = async (event) => {
                 event.preventDefault();
 
@@ -41,6 +42,7 @@ const RegisterUser = () => {
                         }
                 }
         };
+        /////////////////////////
         
         return (
                         <div className='register'>

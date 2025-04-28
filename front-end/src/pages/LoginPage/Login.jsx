@@ -11,6 +11,7 @@ const Login = () => {
         const [isSigningIn, setIsSigningIn] = useState(false)
         const [error, setError] = React.useState(null);
 
+        // CONEXÃO COM O BACK-END
         const handleSubmit = async (event) => {
                 event.preventDefault();
 
@@ -40,6 +41,7 @@ const Login = () => {
                         }
                 }
         };
+        /////////////////////////
 
         return(
                 <>

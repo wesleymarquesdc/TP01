@@ -8,7 +8,7 @@ const Feed = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // utiliza snapshot para "escutar" o banco
+  // CONEXÃO COM O BACK-END
   async function getItems(){
     const unsubscribe = getItensFromDB((data) => {
       setItems(data);
@@ -17,6 +17,7 @@ const Feed = () => {
 
     return () => unsubscribe();
   }
+  /////////////////////////
 
   useEffect(() => {
     getItems()
