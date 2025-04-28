@@ -1,35 +1,26 @@
 import "../../pages/DashboardPage/Dashboard.css"
-
-
 import { useEffect, useState } from 'react';
 import FeedItem from '../Item/FeedItem.jsx';
-import axios from "axios";
+import { getItensFromDB } from "../../firebase/db.jsx";
 
 const Feed = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  // utiliza snapshot para "escutar" o banco
+  async function getItems(){
+    const unsubscribe = getItensFromDB((data) => {
+      setItems(data);
+      setIsLoading(false);
+    });
 
-  function getItems(){
-    // Substitua pelo back-end real:
-    axios.get(`${BASE_URL}/items`)
-      .then(res => {
-          setItems(res.data)
-          setIsLoading(false)
-      })
-      .catch(err => {
-        console.error('Erro ao carregar itens:', err)
-        setError(err)
-      })
+    return () => unsubscribe();
   }
 
-  useEffect( () => {
-    getItems();
+  useEffect(() => {
+    getItems()
   }, []);
-
-  
 
   if (isLoading) return <div className="loading">Carregando...</div>;
   if (error) return <div className="error">Erro: {error}</div>;
@@ -37,13 +28,12 @@ const Feed = () => {
 
   return (
     <>
-      {items == null ? 
+      {items ? 
         <div className="feed-items">
           {items.map(item => (
             <FeedItem key={item.id} item={item} />
           ))}
         </div> : <div>Nao foi possivel carregar o feed</div>
-      
       }
     </>
   );

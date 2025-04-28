@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, Navigate, Link } from 'react-router-dom';
 import { useAuth } from './contexts/authContext/index.jsx';
 import LoginPage from './pages/LoginPage/Login.jsx';
