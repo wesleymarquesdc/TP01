@@ -10,10 +10,9 @@ const RegisterItem = ( ) => {
         description: '',
         date: '',
         location: '',
-        // photo: null,
+        photo: null,
         type: 'perdido',
-        category: '',
-        // user: ''
+        category: ''
     });
     const [error, setError] = useState("");
 
@@ -22,10 +21,11 @@ const RegisterItem = ( ) => {
     const maxDate = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
     
     const handleChange = (e) => {
-      const { name, value } = e.target;
+      const { name, type, value, files } = e.target;
+    
       setItem(prev => ({
         ...prev,
-        [name]: value
+        [name]: type === "file" ? files[0] : value
       }));
     };
 
@@ -37,7 +37,10 @@ const RegisterItem = ( ) => {
         return;
       }
 
+      // CONEXÃO COM BACK-END
       const id = await saveItemToDB(item);
+      ///////////////////////
+      
       if (id) {
         setError('')
         alert('Item cadastrado com sucesso!');
@@ -46,10 +49,9 @@ const RegisterItem = ( ) => {
           description: '',
           date: '',
           location: '',
-          // photo: null,
+          photo: null,
           type: 'perdido',
-          category: '',
-          // user: ''
+          category: ''
         });
       } else {
         alert('Erro ao cadastrar item')
@@ -91,11 +93,11 @@ const RegisterItem = ( ) => {
               placeholder="Local" 
               required />
 
-              {/* <input type="file" 
+              <input type="file" 
               name="photo" 
               accept="image/*"  
               onChange={handleChange} 
-              placeholder="Foto" /> */}
+              placeholder="Foto" />
 
               <select name="type" 
               value={item.type} 

@@ -5,10 +5,11 @@ import { AuthProvider } from './contexts/authContext/index.jsx'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-  // Browser Route é para lidar com as rotas , para testar um componente sozinho, importe-o e remova a tag do BrowserRouter
+  // CONEXÃO COM O BACK-END
   <StrictMode>
     <AuthProvider>
       <App/>
     </AuthProvider>
-  </StrictMode>,
+  </StrictMode>
+  /////////////////////////
 )

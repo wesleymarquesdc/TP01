@@ -1,6 +1,7 @@
 import "./Dashboard.css"
 import React from "react";
 import { doSignOut } from "../../firebase/auth";
+import { useAuth } from "../../contexts/authContext";
 import RegisterItem from "../../components/RegisterItem/RegisterItem";
 import Feed from "../../components/Feed/Feed";
 import Search from "../../components/Search/Search";
@@ -12,11 +13,15 @@ const Dashboard = () => {
     const containerRef = React.useRef(null);
     const sidebarRef = React.useRef(null);
 
-    /* Lidar com logout do usuario */
+    // CONEXÃO COM O BACK-END
+    const { currentUser } = useAuth()
+    const userName = currentUser.displayName
+
     const onSignOut = async (e) => {
         e.preventDefault()
         await doSignOut()
     }
+    /////////////////////////
 
     React.useEffect(() => {
         if (sidebarRef.current && containerRef.current) {
@@ -32,6 +37,7 @@ const Dashboard = () => {
     return (
         <>
             <header className="dashboard-header">
+                <div>Nome: {userName ? userName : "Usuário"}</div>
                 <Header onClick={onSignOut}></Header>
             </header>
 
