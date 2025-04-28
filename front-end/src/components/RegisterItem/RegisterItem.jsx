@@ -1,77 +1,57 @@
 import React, { useState } from "react";
-// import axios from 'axios';
-// import { useNavigate } from "react-router-dom";
 import "../../pages/DashboardPage/Dashboard.css";
 import SubmitButton from "../Button/SubmitButton.jsx";
 import SelectCategory from "../SelectCategory/SelectCategory.jsx";
-// import api from '../../services/api.js'
+import { saveItemToDB } from "../../firebase/db.jsx";
 
 const RegisterItem = ( ) => {
-    const [formData, setFormData] = useState({
+    const [item, setItem] = useState({
         title: '',
         description: '',
         date: '',
         location: '',
-        photo: null,
+        // photo: null,
         type: 'perdido',
         category: '',
-        user: ''
+        // user: ''
     });
-
     const [error, setError] = useState("");
 
-    // Definir as datas maximas e minimas
-    const dataMinima = "1927-09-07"; // Data fixa
-    const dataMaxima = new Date().toISOString().split("T")[0]; // Data atual formatada como YYYY-MM-DD
+    // datas mínimas e máximas
+    const minDate = "1927-09-07";
+    const maxDate = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
     
     const handleChange = (e) => {
       const { name, value } = e.target;
-      setFormData(prev => ({
+      setItem(prev => ({
         ...prev,
         [name]: value
       }));
     };
 
-    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-    async function getItems(){
-      // Substitua pelo Back-end real :
-      // await api.get(`${BASE_URL}/items`);
-      console.log("Passou por aqui!")
-    }
-  
-    React.useEffect(()=> {
-      getItems()
-    },[])
-
-
     const handleSubmit = async (e) => {
       e.preventDefault();
-      try {
-        // SUbstitua pelo Back-end real:
-        // await axios.post(`${BASE_URL}/items`, formData);
-        
-        if (!formData.category) {
-          setError("Por favor, selecione uma categoria.");
-          return;
-        }
-        
-        setError('');
+
+      if (!item.category) {
+        setError("Por favor, selecione uma categoria.");
+        return;
+      }
+
+      const id = await saveItemToDB(item);
+      if (id) {
+        setError('')
         alert('Item cadastrado com sucesso!');
-        
-        // Reset form after submission
-        setFormData({
+        setItem({
           title: '',
           description: '',
           date: '',
           location: '',
-          photo: null,
+          // photo: null,
           type: 'perdido',
           category: '',
-          user: ''
+          // user: ''
         });
-      } catch (error) {
-        console.error('Error adding item:', error);
+      } else {
         alert('Erro ao cadastrar item')
       }
     };
@@ -81,17 +61,54 @@ const RegisterItem = ( ) => {
             <h2>Cadastrar Item Perdido</h2>
             
             <form onSubmit={handleSubmit}>
-              <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Título" required />
-              <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Descrição" rows="1" required />
-              <input type="date" name="date" value={formData.data} onChange={handleChange} min={dataMinima} max={dataMaxima} required />
-              <input type="text" name="location" value={formData.location} onChange={handleChange} placeholder="Local" required />
-              <input type="file" name="photo" accept="image/*"  onChange={handleChange} placeholder="Foto" />
-              <select name="type" value={formData.type} onChange={handleChange}>
+
+              <input type="text" 
+              name="title" 
+              value={item.title} 
+              onChange={handleChange} 
+              placeholder="Título" 
+              required />
+
+              <textarea name="description" 
+              value={item.description} 
+              onChange={handleChange} 
+              placeholder="Descrição" 
+              rows="1" 
+              required />
+
+              <input type="date" 
+              name="date" 
+              value={item.date} 
+              onChange={handleChange} 
+              min={minDate} 
+              max={maxDate} 
+              required />
+
+              <input type="text" 
+              name="location" 
+              value={item.location} 
+              onChange={handleChange} 
+              placeholder="Local" 
+              required />
+
+              {/* <input type="file" 
+              name="photo" 
+              accept="image/*"  
+              onChange={handleChange} 
+              placeholder="Foto" /> */}
+
+              <select name="type" 
+              value={item.type} 
+              onChange={handleChange}>
                 <option value="perdido">Perdido</option>
                 <option value="encontrado">Encontrado</option>
               </select>
-              {/* <input type="text" name="category" value={formData.category} onChange={handleChange} placeholder="Categoria" required /> */}
-              <SelectCategory value={formData.category} onChange={handleChange}></SelectCategory>
+
+              {/* CONFIGURAR NO BANCO DE DADOS */}
+              <SelectCategory 
+              value={item.category} 
+              onChange={handleChange}>
+              </SelectCategory>
 
               {error && <p style={{ color: "red" }}>{error}</p>} {/* Mensagem de erro */}
               <SubmitButton>Cadastrar</SubmitButton>
