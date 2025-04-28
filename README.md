@@ -10,8 +10,8 @@ Criar um sistema de achados e perdidos exclusivo para a UFMG, simplificando a co
 - Sistema de Chat (Fundamental para a interação e devolução de itens).
 
 ## Membros e papéis
-- Lucas Paulo de Oliveira Silva: Fullstack
-- Wesley Marques Daniel Chaves: Fullstack
+- Lucas Paulo de Oliveira Silva: Front-end
+- Wesley Marques Daniel Chaves: Back-end
 - Eduardo Alves Cordeiro: Fullstack
 
 ## Tecnologias
