@@ -4,6 +4,7 @@ import { doSignOut } from "../../firebase/auth";
 import RegisterItem from "../../components/RegisterItem/RegisterItem";
 import Feed from "../../components/Feed/Feed";
 import Search from "../../components/Search/Search";
+import Header from "../../components/Header/Header";
 
 
 const Dashboard = () => {
@@ -11,6 +12,7 @@ const Dashboard = () => {
     const containerRef = React.useRef(null);
     const sidebarRef = React.useRef(null);
 
+    /* Lidar com logout do usuario */
     const onSignOut = async (e) => {
         e.preventDefault()
         await doSignOut()
@@ -30,8 +32,7 @@ const Dashboard = () => {
     return (
         <>
             <header className="dashboard-header">
-                <h1>Sistema de Achados e Perdidos - Dashboard</h1>
-                <button onClick={onSignOut}>Sair</button>
+                <Header onClick={onSignOut}></Header>
             </header>
 
             <div className="dashboard-container">
@@ -53,9 +54,6 @@ const Dashboard = () => {
                             
                         </ul>
                     </section>
-                    
-                    
-                    
 
                 </div>
             </div>

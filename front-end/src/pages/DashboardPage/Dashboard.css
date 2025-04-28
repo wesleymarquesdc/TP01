@@ -8,7 +8,7 @@
 }
 
 body{
-    background: linear-gradient(135deg, #6AAFE6, #4056A1);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
     box-sizing: border-box;
     height: 100%;
     display: block;
@@ -24,16 +24,31 @@ html{
 
 /* Cabeçalho da dashboard */
 .dashboard-header {
-    background: #fff;
+    background: linear-gradient(--header-gradient);
     padding: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    box-shadow: var(--shadow-sm);
     margin-bottom: 5px;
+    display: flex;
+}
+
+.titulo-header{
+    font-weight: bold;
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+}
+
+.p2{
+    text-align: right;
 }
 
 .dashboard-header h1 {
-    color: #4056A1;
+    color: var(--primary-dark);
     font-size: 24px;
+}
+
+.logo-header{
+    height: auto;
 }
 
 /* Container principal usando CSS Grid */
@@ -56,7 +71,7 @@ html{
     }
 
     .dashboard-header{
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         padding: 15px;
     }
 
@@ -64,22 +79,22 @@ html{
 
 /* Estilização do feed (coluna única para os itens perdidos) */
 .dashboard-feed {
-    background: #fff;
+    background: var(--white);
     padding: 20px 20px 0 20px;
     box-sizing: border-box;
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-sm);
 
     overflow-y: auto;
 }
 
 .dashboard-feed h2 {
-    color: #4056A1;
+    color: var(--primary-dark);
     margin-bottom: 10px;
 }
 
 .feed-item {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--medium-gray);
     padding: 10px 0;
 }
 
@@ -90,17 +105,17 @@ html{
 }
 
 .feed-item h3 {
-    color: #4056A1;
+    color: var(--primary-dark);
     margin-bottom: 5px;
 }
 
 .feed-item p {
-    color: #333;
+    color: var(--text-color);
 }
 
 /* Estilização da sidebar para pesquisa, notificações e cadastro */
 .dashboard-sidebar section {
-    background: #fff;
+    background: var(--white);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
@@ -108,7 +123,7 @@ html{
 }
 
 .dashboard-sidebar h2 {
-    color: #4056A1;
+    color: var(--primary-dark);
     margin-bottom: 10px;
 }
 
@@ -121,11 +136,19 @@ html{
     padding-left: 1rem;
 }
 
+.accept{
+    color: var(--green);
+}
+
+.decline{
+    color: var(--red);
+}
+
 /* Estilos dos formulários */
 form label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -135,7 +158,7 @@ form select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--medium-gray);
     border-radius: 4px;
 }
 
@@ -148,13 +171,13 @@ form button {
     width: 100%;
     border: none;
     border-radius: 4px;
-    background-color: #4056A1;
-    color: #fff;
+    background-color: var(--primary-dark);
+    color: var(--white);
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 form button:hover {
-    background-color: #6AAFE6;
+    background-color: var(--primary-light);
 }
