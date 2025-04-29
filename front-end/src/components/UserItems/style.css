@@ -1,0 +1,18 @@
+@import '../../index.css';
+
+.user-modal-container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+}
+
+.close-modal-button{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--red);
+        color: var(--white);
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+}
