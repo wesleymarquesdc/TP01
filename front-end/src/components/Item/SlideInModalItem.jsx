@@ -30,17 +30,17 @@ const SlideInModalItem = ({item, children, estiloBotao}) => {
                                                 <p><strong>Data:</strong> {item.date}</p>
                                         </div>
 
-                                        <div className="details">
-                                                <div>
-                                                        {item.photo && (
-                                                                <img 
-                                                                        src={item.photo} 
-                                                                        alt={item.title} 
-                                                                        className="item-photo" 
-                                                                />
-                                                        )}
+                                        <div className='image'>
+                                                {item.photo && (
+                                                        <img 
+                                                                src={item.photo} 
+                                                                alt={item.title} 
+                                                                className="item-photo" 
+                                                        />
+                                                )}
+                                        </div>
 
-                                                </div>
+                                        <div className="details">
                                                 <p><strong>Descrição:</strong> {item.description || 'Sem descrição'}</p>
                                                 <p><strong>Categoria:</strong> {item.category}</p>
                                                 <p><strong>Tipo:</strong> {item.type}</p>

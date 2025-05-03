@@ -42,8 +42,17 @@
         grid-template-columns: 1fr 1fr; /* Duas colunas */
         gap: 20px;
 }
-      
-      /* Estilo da foto */
+
+.image{
+        grid-row: 3 / 4; /* Faz o elemento ocupar apenas a terceira linha */
+        grid-column: 1 / -1; /* Faz o elemento ocupar todas as colunas */
+
+        max-width: auto; /* Define a largura máxima da div */
+        max-height: 300px; /* Define a altura máxima da div */
+        overflow: auto;
+}
+
+/* Estilo da foto */
 .item-photo {
         width: 100%;
         height: auto;

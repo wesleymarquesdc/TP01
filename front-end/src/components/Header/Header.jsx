@@ -2,26 +2,29 @@ import "../../pages/DashboardPage/Dashboard.css"
 import React from 'react'
 import Menu from "../Menu/Menu"
 
-const Header = ({user, onClick}) => {
+const Header = ({userName, onClick}) => {
   return (
-        <>
+        <div className="dashboard-header">
+
+                <div className="usuario-header">
+                        <div>
+                                Seja bem-vindo,  
+                        </div> 
+                        {userName ? userName : " "}
+                </div>
+
                 <div className="titulo-header">
-                        <div className="p1">
+                        <p id="p1">
                                 Achados 
-                        </div>
+                        </p>
 
-                        <div className="p2">
+                        <p id="p2">
                                 & Perdidos
-                        </div>
+                        </p>
                 </div>
-
-                <div>
-                        {user}
-                </div>
-
 
                 <Menu onClick={onClick} ></Menu>
-        </>
+        </div>
   )
 }
 

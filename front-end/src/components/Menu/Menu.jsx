@@ -1,16 +1,27 @@
 import "./style.css"
 import React from 'react'
 import { Link } from 'react-router-dom'
+import UserItems from "../UserItems/UserItems";
 
 const Menu = ({onClick}) => {
+        const [ showUserItems, setShowUserItems] = React.useState(false);
+        
+        const handleClick = () => {
+                setShowUserItems(true);
+        };
+
+        const handleClose = () => {
+                setShowUserItems(false);
+        };
+
         return (
-                <div className='menu'>
+                <div >
                         <ul>
                                 <li>
                                         {/* Define para onde ir*/}
-                                        <Link to="/dashboard" className="menu-link">
+                                        <a onClick={handleClick} className="menu-link">
                                                 Itens
-                                        </Link>
+                                        </a>
                                 </li>
                                 <li>
                                         <Link to="/" className="menu-link" onClick={onClick} >
@@ -18,6 +29,8 @@ const Menu = ({onClick}) => {
                                         </Link>
                                 </li>
                         </ul>
+
+                        {showUserItems && <UserItems onClose={handleClose}></UserItems>}
                 </div>
         )
 }

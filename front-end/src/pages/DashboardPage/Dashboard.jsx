@@ -36,10 +36,8 @@ const Dashboard = () => {
 
     return (
         <>
-            <header className="dashboard-header">
-                <div>Nome: {userName ? userName : "Usuário"}</div>
-                <Header onClick={onSignOut}></Header>
-            </header>
+            <Header userName={userName} onClick={onSignOut}>
+            </Header>
 
             <div className="dashboard-container">
 

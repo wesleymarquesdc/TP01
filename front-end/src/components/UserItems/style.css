@@ -1,0 +1,94 @@
+@import "../../index.css";
+
+/* SlideInModal.css */
+.user-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(var(--primary-gradient  ));
+
+  display: grid;
+  place-items: center; /* Centraliza o conteúdo */
+
+  z-index: 1000;
+}
+
+.user-modal-content {
+  background-color: #fff;
+  width: 750px;
+  height: 780px;
+  padding: 20px;
+  border-radius: 8px;
+  /* animation: slideIn 0.3s forwards; */
+  position: relative;
+
+  padding-top: 30px;
+
+}
+
+h2 {
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+}
+
+select{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+}
+
+/* Animação slide in */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+
+.user-feed-item {
+  border-bottom: 1px solid var(--medium-gray);
+  padding: 10px 0;
+}
+
+.user-feed-item:last-child {
+  border-bottom: none;
+  padding: 0px;
+  padding-top: 10px;
+}
+
+.user-feed-item h3 {
+  color: var(--primary-dark);
+  margin-bottom: 5px;
+}
+
+.user-feed-item p {
+  color: var(--text-color);
+}
+
+.div-button{
+    grid-column: 1 / -1;
+}
+
+.close-modal-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: var(--primary-dark);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+
+}
+
+.close-btn:hover {
+  color: red;
+}
