@@ -1,41 +1,73 @@
 import React from 'react'
 import "../../pages/DashboardPage/Dashboard.css"
+import SlideInModalItem from '../Item/SlideInModalItem';
+import { getItensFromDB } from "../../firebase/db.jsx";
+import "./style.css"
 
-const UserItems = ({item, user}) => {
-        const [ showUserItems, setShowUserItems] = React.useState(false);
+
+const UserItems = ( {onClose} ) => {
+        const [ items , setItems]= React.useState([]);
+        const [isLoading, setIsLoading] = React.useState(true);
+        const [selectedType, setSelectedType] = React.useState("todos"); // Estado para armazenar seleção
+
+        
+        React.useEffect(() => {
+                async function getItems() {
+                        const unsubscribe = getItensFromDB((data) => {
+                                setItems(data);
+                                setIsLoading(false);
+                        });
+        
+                        return () => unsubscribe();
+                }
+
+                getItems();
+        }, []);
 
         const handleSelectChange = (event) => {
-                setOpcaoSelecionada(event.target.value);
+                setSelectedType(event.target.value);
         };
 
+        
+
+        // Filtrando os itens pelo tipo selecionado e pelo userId
+        const filteredItems = items.filter(item => 
+                (selectedType === "todos" || item.type === selectedType) 
+        );
+
         return (
-                <article className='user-modal-container'>
-                        <div className='close-modal-button'>
-                                <button onClick={() => setShowUserItems(false)}>X</button>
-                        </div>
+                <div className='user-modal-overlay'> 
+                        <section className='user-modal-content'>
+                                <button className='close-modal-button' onClick={onClose}>X</button>
 
-                        <section className='feed-user-items'>
-                                <h2>Itens</h2>
-                                <select name="type" 
-                                value={item.type} 
-                                onChange={handleSelectChange}>
-                                        <option value="todos">Todos</option>
-                                        <option value="perdidos">Perdidos</option>
-                                        <option value="encontrados">Encontrados</option>
-                                </select>
-
-
+                                <div>
+                                        <h2>Itens</h2>
+                                        <select name="type" 
+                                                value={selectedType} 
+                                                onChange={handleSelectChange}>
+                                                        <option value="todos">Todos</option>
+                                                        <option value="perdidos">Perdidos</option>
+                                                        <option value="encontrados">Encontrados</option>
+                                        </select>        
+                                </div>
+                        
+                                {isLoading ? (
+                                        <p>Carregando itens...</p>
+                                ) : filteredItems.length > 0 ? (
+                                        <div className="user-feed-item">
+                                                        {filteredItems.map(item => (
+                                                                <SlideInModalItem key={item.id} item={item} />
+                                                        ))}
+                                                </div>
+                                        ) : (
+                                                <div>
+                                        Você não tem itens para este filtro.
+                                </div>
+                                )}
                         </section>
-                                {
-                                        showUserItems ? (
-                                                <SlideInModalItem item={item}> 
-                                                        <div>
-                                                                
-                                                        </div>
-                                                </SlideInModalItem>
-                                        )  : <p>Você não tem itens para esse filtro</p>
-                                }
-                </article>
+
+
+                </div>
         )
 }
 

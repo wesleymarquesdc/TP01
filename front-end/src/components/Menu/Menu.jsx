@@ -10,15 +10,18 @@ const Menu = ({onClick}) => {
                 setShowUserItems(true);
         };
 
+        const handleClose = () => {
+                setShowUserItems(false);
+        };
+
         return (
                 <div >
                         <ul>
                                 <li>
                                         {/* Define para onde ir*/}
-                                        <Link onClick={handleClick} className="menu-link">
+                                        <a onClick={handleClick} className="menu-link">
                                                 Itens
-                                                {showUserItems && <UserItems></UserItems>}
-                                        </Link>
+                                        </a>
                                 </li>
                                 <li>
                                         <Link to="/" className="menu-link" onClick={onClick} >
@@ -26,6 +29,8 @@ const Menu = ({onClick}) => {
                                         </Link>
                                 </li>
                         </ul>
+
+                        {showUserItems && <UserItems onClose={handleClose}></UserItems>}
                 </div>
         )
 }
