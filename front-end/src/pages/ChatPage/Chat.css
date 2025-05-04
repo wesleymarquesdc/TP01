@@ -1,0 +1,168 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 1rem;
+}
+
+/* Container da página de chat */
+.chat-page {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  height: 80vh;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-page .container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* Barra lateral com a lista de chats */
+.chat-sidebar {
+  background: var(--white);
+  border-right: 1px solid var(--medium-gray);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.chat-sidebar h2 {
+  font-size: 18px;
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+}
+
+.chat-list {
+  list-style: none;
+  max-height: calc(80vh - 60px);
+  overflow-y: auto;
+  display: block;
+}
+
+.chat-item {
+  padding: 10px;
+  border-bottom: 1px solid var(--medium-gray);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.chat-item:last-child {
+  border-bottom: none;
+}
+
+.chat-item:hover {
+  background-color: var(--light-gray);
+}
+
+/* Área principal do chat */
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  padding: 20px;
+  height: 100%;
+}
+
+.chat-header {
+  border-bottom: 1px solid var(--medium-gray);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-header h2 {
+  font-size: 18px;
+  color: var(--primary-dark);
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Estilo das mensagens */
+.chat-message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  margin: 8px 0;
+  word-wrap: break-word;
+}
+
+/* Mensagens enviadas pelo usuário (alinhadas à direita) */
+.chat-message.user {
+  background-color: var(--primary-light);
+  align-self: flex-end;
+  color: var(--white);
+}
+
+/* Mensagens do sistema/atendente (alinhadas à esquerda) */
+.chat-message.other {
+  background-color: var(--light-gray);
+  align-self: flex-start;
+  color: var(--text-color);
+}
+
+/* Área de input das mensagens */
+.chat-input-container {
+  display: flex;
+  margin-top: 10px;
+  border-top: 1px solid var(--medium-gray);
+  padding-top: 10px;
+}
+
+.chat-input-container input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--border-radius);
+}
+
+.chat-input-container button {
+  padding: 12px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-dark);
+  color: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.chat-input-container button:hover {
+  background-color: var(--primary-light);
+}
+
+@media (max-width: 700px) {
+  .chat-page{
+    grid-template-columns: 1fr 2fr;
+
+  }
+
+  .chat-input-container {
+    display: grid; /* Empilha os elementos */
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .chat-input-container input {
+    width: 100%;
+  }
+
+  .chat-input-container button {
+    margin: 0;
+  }
+}

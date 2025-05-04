@@ -48,10 +48,14 @@ html{
     color: rgba(0, 0, 0, 0.2);
     text-transform: uppercase;
     line-height: 0.8;
+
+    text-align: center;
 }
 
 .usuario-header{
     display: grid;
+    display: none;
+
     align-content: center;
     color: var(--white);
     font-size: 1.5rem;
@@ -83,14 +87,7 @@ html{
 
 }
 
-/* Em telas maiores (ex: desktop), usa duas colunas */
-@media (min-width: 768px) {
-    .dashboard-container {
-        grid-template-columns: 2fr 1fr;
-        gap: 20px;
-        
-    }
-
+@media (min-width: 1000px){
     .dashboard-header{
         margin-bottom: 10px;
         padding: 15px;
@@ -102,10 +99,23 @@ html{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr ;
     }
+    
 
     .usuario-header{
+        display: grid;
         max-width: 30ch;
     }
+}
+
+/* Em telas maiores (ex: desktop), usa duas colunas */
+@media (min-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        
+    }
+
+    
 }
 
 

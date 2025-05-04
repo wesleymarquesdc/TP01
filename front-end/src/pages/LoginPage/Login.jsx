@@ -20,7 +20,7 @@ const Login = () => {
                         try{
                                 await doSignInWithEmailAndPassword(email, password)
                         }catch(err){
-                                setError(err)
+                                setError(err.message)
                                 console.log(error)
                         }finally{
                                 setIsSigningIn(false)
@@ -34,7 +34,7 @@ const Login = () => {
                         try{
                                 await doSignInWithGoogle()
                         }catch(err){
-                                setError(err)
+                                setError(err.message)
                                 console.log(error)
                         }finally{
                                 setIsSigningIn(false)
@@ -76,6 +76,8 @@ const Login = () => {
                                 />
 
                                 <SubmitButton>Entrar</SubmitButton>
+                                {error && <p style={{ color: "red" }}>{error}</p>} {/* Mensagem de erro */}
+                                
                                 <GoogleButton type="button" onClick={onGoogleSignIn} style={{marginTop: "15px"}} >
                                         Entrar com o Google
                                 </GoogleButton>

@@ -3,6 +3,7 @@ import { useAuth } from './contexts/authContext/index.jsx';
 import LoginPage from './pages/LoginPage/Login.jsx';
 import DashboardPage from './pages/DashboardPage/Dashboard.jsx'
 import RegisterUserPage from './pages/RegisterUserPage/RegisterUser.jsx'
+import ChatPage from './pages/ChatPage/Chat.jsx'
 
 function App() {
   // CONEXÃO COM O BACK-END
@@ -51,6 +52,17 @@ function App() {
           element={
             isAuthenticated ? (
               <DashboardPage />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        <Route
+          path="/chat"
+          element={
+            isAuthenticated ? (
+              <ChatPage />
             ) : (
               <Navigate to="/login" replace />
             )
