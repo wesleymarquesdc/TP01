@@ -16,7 +16,7 @@ const UserItems = ( {onClose} ) => {
                         const unsubscribe = getItensFromDB((data) => {
                                 setItems(data);
                                 setIsLoading(false);
-                        });
+                        },  true);
         
                         return () => unsubscribe();
                 }
@@ -29,8 +29,7 @@ const UserItems = ( {onClose} ) => {
         };
 
         
-
-        // Filtrando os itens pelo tipo selecionado e pelo userId
+        // Filtrando os itens pelo tipo selecionado 
         const filteredItems = items.filter(item => 
                 (selectedType === "todos" || item.type === selectedType) 
         );

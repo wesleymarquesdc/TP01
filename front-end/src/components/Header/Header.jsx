@@ -2,7 +2,7 @@ import "../../pages/DashboardPage/Dashboard.css"
 import React from 'react'
 import Menu from "../Menu/Menu"
 
-const Header = ({userName, onClick}) => {
+const Header = ({userName, onClick, choosePage}) => {
   return (
         <div className="dashboard-header">
 
@@ -23,7 +23,7 @@ const Header = ({userName, onClick}) => {
                         </p>
                 </div>
 
-                <Menu onClick={onClick} ></Menu>
+                <Menu onClick={onClick} choosePage={choosePage} ></Menu>
         </div>
   )
 }

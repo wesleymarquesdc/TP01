@@ -36,3 +36,11 @@ li{
 .menu-link:hover {
         background-color: var(--primary-dark); /* Altere a cor no hover */
 }
+
+@media (max-width: 500px) {
+        ul {
+                display: grid;
+                grid-template-columns: 1fr;
+        }
+
+}

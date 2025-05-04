@@ -21,7 +21,7 @@ const RegisterUser = () => {
                         try{
                                 await doSignUpWithEmailAndPassword(email, password, userName)
                         }catch(err){
-                                setError(err)
+                                setError(err.message)
                                 console.log(error)
                         }finally{
                                 setIsSigningIn(false)
@@ -35,7 +35,7 @@ const RegisterUser = () => {
                         try{
                                 await doSignInWithGoogle()
                         }catch(err){
-                                setError(err)
+                                setError(err.message)
                                 console.log(error)
                         }finally{
                                 setIsSigningIn(false)
@@ -77,7 +77,8 @@ const RegisterUser = () => {
                                         required />
 
                                         <SubmitButton>Cadastrar</SubmitButton>
-                                        
+                                        {error && <p style={{ color: "red" }}>{error}</p>} {/* Mensagem de erro */}
+
                                         <p>OU</p>
 
                                         <GoogleButton type="button" onClick={onGoogleSignIn}>
