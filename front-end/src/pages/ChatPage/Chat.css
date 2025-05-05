@@ -89,6 +89,8 @@
   flex-grow: 1;
   overflow-y: auto;
   padding-right: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Estilo das mensagens */

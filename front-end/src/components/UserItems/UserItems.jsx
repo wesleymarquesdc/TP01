@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
 import "../../pages/DashboardPage/Dashboard.css"
 import SlideInModalItem from '../Item/SlideInModalItem';
 import { getItensFromDB } from "../../firebase/db.jsx";
@@ -6,32 +6,27 @@ import "./style.css"
 
 
 const UserItems = ( {onClose} ) => {
-        const [ items , setItems]= React.useState([]);
-        const [isLoading, setIsLoading] = React.useState(true);
-        const [selectedType, setSelectedType] = React.useState("todos"); // Estado para armazenar seleção
+        const [items, setItems]= useState([]);
+        const [isLoading, setIsLoading] = useState(true);
+        const [selectedType, setSelectedType] = useState("todos");
 
-        
-        React.useEffect(() => {
-                async function getItems() {
-                        const unsubscribe = getItensFromDB((data) => {
-                                setItems(data);
-                                setIsLoading(false);
-                        },  true);
-        
-                        return () => unsubscribe();
-                }
-
-                getItems();
+        // CONEXÃO COM O BACK-END
+        useEffect(() => {
+                const unsubscribe = getItensFromDB((data) => {
+                  setItems(data);
+                  setIsLoading(false);
+                }, true);
+              
+                return () => unsubscribe();
         }, []);
-
+              
         const handleSelectChange = (event) => {
                 setSelectedType(event.target.value);
         };
-
+        /////////////////////////
         
-        // Filtrando os itens pelo tipo selecionado 
         const filteredItems = items.filter(item => 
-                (selectedType === "todos" || item.type === selectedType) 
+                (selectedType === "todos" || item.type === selectedType.slice(0, -1).toLocaleLowerCase()) 
         );
 
         return (

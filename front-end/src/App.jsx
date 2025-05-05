@@ -1,15 +1,13 @@
 import { BrowserRouter as Router, Routes, Route, BrowserRouter, Navigate, Link } from 'react-router-dom';
-import { useAuth } from './contexts/authContext/index.jsx';
+import { useAuth } from './contexts/authContext.jsx';
 import LoginPage from './pages/LoginPage/Login.jsx';
 import DashboardPage from './pages/DashboardPage/Dashboard.jsx'
 import RegisterUserPage from './pages/RegisterUserPage/RegisterUser.jsx'
 import ChatPage from './pages/ChatPage/Chat.jsx'
 
 function App() {
-  // CONEXÃO COM O BACK-END
   const { userLoggedIn } = useAuth()
   const isAuthenticated = userLoggedIn
-  /////////////////////////
 
   return (
     <BrowserRouter>

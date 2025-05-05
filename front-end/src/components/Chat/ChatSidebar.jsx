@@ -11,11 +11,11 @@ const ChatSidebar = ({ onSelectChat,  selectedChatId, chats, loading }) => {
                                 <ul className="chat-list">
                                         {chats.map(chat => (
                                         <li 
-                                                key={chat.id} 
-                                                className={`chat-item ${selectedChatId === chat.id ? 'active' : ''}`}
+                                                key={chat.userId} 
+                                                className={`chat-item ${selectedChatId === chat.userId ? 'active' : ''}`}
                                                 onClick={() => onSelectChat(chat)}
                                                 >
-                                                {chat.name}
+                                                {chat.displayName}
                                                 {chat.lastMessage && (
                                                         <span className="last-message-preview">
                                                         {chat.lastMessage.text.substring(0, 30)}...

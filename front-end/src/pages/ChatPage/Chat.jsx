@@ -1,56 +1,43 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { doSignOut } from "../../firebase/auth";
+import { getUserChatsFromDB } from '../../firebase/db';
 import { useAuth } from "../../contexts/authContext";
-import "./Chat.css"
+import { useChat } from '../../contexts/chatContext';
 import Header from '../../components/Header/Header'
 import ChatSidebar from '../../components/Chat/ChatSidebar';
 import ChatMain from '../../components/Chat/ChatMain';
+import "./Chat.css"
 
 const Chat = () => {
-        // CONEXÃO COM O BACK-END
         const { currentUser } = useAuth()
+        const { dispatch } = useChat()
+        const [isLoading, setIsLoading] = useState(true);
+        const [chats, setChats] = useState([])
+        const [selectedChat, setSelectedChat] = useState(null);
+        
         const userName = currentUser.displayName
-
+        
+        // CONEXÃO COM O BACK-END
         const onSignOut = async (e) => {
                 e.preventDefault()
                 await doSignOut()
         }
 
-        // //////////////////////
-
-        const [chats, setChats] = React.useState([]);
-        const [selectedChat, setSelectedChat] = React.useState(null);
-
-        // Simulacao de uma funcao que retorna um vetor com os usuarios (id e nome) que mandaram mensagens 
-        const getUsers = () => {
-                return new Promise((resolve) => {
-                        setTimeout(() => {
-                                resolve([
-                                { id: 1, name: "Maria" },
-                                { id: 2, name: "João" },
-                                { id: 3, name: "Rodrigo" },
-                                { id: 4, name: "Ana" },
-                                { id: 5, name: "Carlos" },
-                                { id: 6, name: "Fernanda" },
-                                ]);
-                        }, 500);
+        useEffect(() => {
+                const unsubscribe = getUserChatsFromDB((data) => {
+                  setChats(data);
+                  setIsLoading(false);
                 });
-        };
-        
-        // Busca os chats assim que a página é renderizada
-        React.useEffect(() => {
-                (async () => {
-                try {
-                        const chatsData = await getUsers();
-                        setChats(chatsData);
-                        // Opcional: definir o primeiro chat como padrão selecionado
-                        setSelectedChat(chatsData[0]);
-                } catch (error) {
-                        console.error("Erro ao buscar chats:", error);
-                }
-                })();
-        }, []);
+              
+                return () => unsubscribe();
+              }, []);
+              
 
+        const handleSelect = (chat) => {
+                dispatch({type: "CHANGE_USER", payload: chat})
+                setSelectedChat(chat)
+        }
+        /////////////////////////
                 
         return (
         <>
@@ -60,7 +47,8 @@ const Chat = () => {
                         <div className='chat-page'>
                                 <ChatSidebar 
                                 chats={chats} 
-                                onSelectChat={(chat) => setSelectedChat(chat)}
+                                loading={isLoading}
+                                onSelectChat={(chat) => handleSelect(chat)}
                                 selectedChatId={selectedChat ? selectedChat.id : null}
                                 ></ChatSidebar>
 
