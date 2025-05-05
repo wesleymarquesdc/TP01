@@ -13,8 +13,8 @@ const RegisterUser = () => {
         const [error, setError] = React.useState(null);
 
         // CONEXÃO COM O BACK-END
-        const handleSubmit = async (event) => {
-                event.preventDefault();
+        const handleSubmit = async (e) => {
+                e.preventDefault();
 
                 if(!isSigningIn) {
                         setIsSigningIn(true)
@@ -30,6 +30,7 @@ const RegisterUser = () => {
         };
 
         const onGoogleSignIn = async (e) => {
+                e.preventDefault();
                 if(!isSigningIn) {
                         setIsSigningIn(true)
                         try{
@@ -45,54 +46,54 @@ const RegisterUser = () => {
         /////////////////////////
         
         return (
-                        <div className='register'>
-                        <div className='register-container'>
-                                <h2>Crie sua conta</h2>
-                                <form onSubmit={handleSubmit}>
-                                        <label htmlFor="name">Nome</label>
-                                        <input 
-                                        type="text" 
-                                        id="name" 
-                                        name="name" 
-                                        placeholder="Digite seu nome" 
-                                        onChange={(e) => setUserName(e.target.value)}
-                                        required />
+                <div className='register'>
+                <div className='register-container'>
+                        <h2>Crie sua conta</h2>
+                        <form onSubmit={handleSubmit}>
+                                <label htmlFor="name">Nome</label>
+                                <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Digite seu nome" 
+                                onChange={(e) => setUserName(e.target.value)}
+                                required />
 
-                                        <label htmlFor="email">E-mail</label>
-                                        <input 
-                                        type="email" 
-                                        id="email" 
-                                        name="email" 
-                                        placeholder="Digite seu e-mail" 
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required />
+                                <label htmlFor="email">E-mail</label>
+                                <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Digite seu e-mail" 
+                                onChange={(e) => setEmail(e.target.value)}
+                                required />
 
-                                        <label htmlFor="password">Senha</label>
-                                        <input 
-                                        type="password" 
-                                        id="password" 
-                                        name="password" 
-                                        placeholder="Digite sua senha" 
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        required />
+                                <label htmlFor="password">Senha</label>
+                                <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Digite sua senha" 
+                                onChange={(e) => setPassword(e.target.value)}
+                                required />
 
-                                        <SubmitButton>Cadastrar</SubmitButton>
-                                        {error && <p style={{ color: "red" }}>{error}</p>} {/* Mensagem de erro */}
+                                <SubmitButton>Cadastrar</SubmitButton>
+                                {error && <p style={{ color: "red" }}>{error}</p>} {/* Mensagem de erro */}
 
-                                        <p>OU</p>
+                                <p>OU</p>
 
-                                        <GoogleButton type="button" onClick={onGoogleSignIn}>
-                                                Entrar com o Google
-                                        </GoogleButton>
+                                <GoogleButton type="button" onClick={onGoogleSignIn}>
+                                        Entrar com o Google
+                                </GoogleButton>
 
 
-                                <p className="login-link">
-                                        <span>Tem uma conta? </span>
-                                        <Link to="/login">Faça login</Link>
-                                </p>
-                                </form>
-                        </div>
-                        </div>
+                        <p className="login-link">
+                                <span>Tem uma conta? </span>
+                                <Link to="/login">Faça login</Link>
+                        </p>
+                        </form>
+                </div>
+                </div>
         )
 }
 
