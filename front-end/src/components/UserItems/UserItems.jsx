@@ -45,19 +45,20 @@ const UserItems = ( {onClose} ) => {
                                         </select>        
                                 </div>
                         
-                                {isLoading ? (
-                                        <p>Carregando itens...</p>
-                                ) : filteredItems.length > 0 ? (
-                                        <div className="user-feed-item">
-                                                        {filteredItems.map(item => (
-                                                                <SlideInModalItem key={item.id} item={item} />
-                                                        ))}
-                                                </div>
-                                        ) : (
+                                        {isLoading ? (
+                                                <p>Carregando itens...</p>
+                                        ) : filteredItems.length > 0 ? (
+                                                <div className="user-feed-item">
+                                                                {filteredItems.map(item => (
+                                                                        <SlideInModalItem key={item.id} item={item} />
+                                                                ))}
+                                                        </div>
+                                                ) : (
                                                 <div>
-                                        Você não tem itens para este filtro.
-                                </div>
-                                )}
+                                                        Você não tem itens para este filtro.
+                                                </div>
+                                        )}
+
                         </section>
 
 

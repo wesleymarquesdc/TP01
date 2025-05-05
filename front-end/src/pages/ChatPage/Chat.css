@@ -72,6 +72,7 @@
   background: var(--white);
   padding: 20px;
   height: 100%;
+  overflow-y: auto;
 }
 
 .chat-header {

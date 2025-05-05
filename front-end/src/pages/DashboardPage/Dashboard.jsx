@@ -51,12 +51,7 @@ const Dashboard = () => {
 
                     <RegisterItem></RegisterItem>
                     
-                    <section className="notifications-section">
-                        <h2>Notificações</h2>
-                        <ul>
-                            
-                        </ul>
-                    </section>
+                    
 
                 </div>
             </div>
