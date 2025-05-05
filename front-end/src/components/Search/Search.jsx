@@ -17,11 +17,7 @@ const Search = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (category === '') {
-        setError('Por favor, selecione uma categoria!');
-        return;
-        }
-
+        
         setSelectedCategory(category);
     };
     
