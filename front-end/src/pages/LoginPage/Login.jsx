@@ -20,8 +20,12 @@ const Login = () => {
                         try{
                                 await doSignInWithEmailAndPassword(email, password)
                         }catch(err){
-                                setError(err.message)
-                                console.log(error)
+                                if (err.code === "auth/invalid-credential") {
+                                        setError("Usuário ou senha inválidos");
+                                } else {
+                                        setError("Erro ao fazer login. Tente novamente");
+                                }
+                                console.log(err); // para debug
                         }finally{
                                 setIsSigningIn(false)
                         }
