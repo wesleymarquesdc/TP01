@@ -21,8 +21,17 @@ const RegisterUser = () => {
                         try{
                                 await doSignUpWithEmailAndPassword(email, password, userName)
                         }catch(err){
-                                setError(err.message)
-                                console.log(error)
+                                switch (err.code) {
+                                        case "auth/weak-password":
+                                          setError("A senha deve ter pelo menos 6 caracteres.");
+                                          break;
+                                        case "auth/invalid-email":
+                                          setError("E-mail inválido.");
+                                          break;
+                                        default:
+                                          setError("Erro ao registrar. Tente novamente.");
+                                }
+                                console.log(err); // debug
                         }finally{
                                 setIsSigningIn(false)
                         }
