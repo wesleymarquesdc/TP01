@@ -17,7 +17,6 @@ const SelectCategory = ({ value, onChange, children }) => {
 
                 {children}
                 </>
-                
         )
 }
 
