@@ -45,7 +45,7 @@ export const getUserChatsFromDB = (callback) => {
 };
 
 // utiliza snapshot para "escutar" o banco
-export const getItensFromDB = (callback, onlyOwn = false) => {
+export const getItensFromDB = (callback, onlyOwn = false, category = null) => {
   const itensCollectionsRef = collection(db, ITENS_COLLECTION);
   
   let q;
@@ -63,10 +63,15 @@ export const getItensFromDB = (callback, onlyOwn = false) => {
   }
   
   const unsubscribe = onSnapshot(q, (snapshot) => {
-    const itens = snapshot.docs.map((doc) => ({
+    let itens = snapshot.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id
     }));
+
+    if (category) {
+      itens = itens.filter(item => item.category === category);
+    }
+
     callback(itens);
   });
   
